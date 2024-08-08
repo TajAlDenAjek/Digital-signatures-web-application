@@ -23,9 +23,12 @@ const RegisterationForm = () => {
         try {
             if(values?.confirmPassword!==values?.password){
                 message.error('you have entered different passwords !')
-                return 
+                return
             }
-            const userData = await register({ ...values }).unwrap()
+            const userData = await register({ 
+                ...values,
+                "confirm password":values.confirmPassword
+            }).unwrap()
             form.resetFields()
             message.success('Registration Successful')
             navigate('/login')
