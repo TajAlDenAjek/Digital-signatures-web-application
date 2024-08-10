@@ -7,9 +7,12 @@ import { message } from 'antd'
 
 type RegisterFieldType = {
     firstName?: string
+    middleName?:string
     lastName?: string
+    organization?:string
     email?: string,
     password?: string,
+    confirmPassword?:string
 }
 const RegisterationForm = () => {
     const [register, { isLoading }] = useRegisterMutation()
@@ -18,7 +21,14 @@ const RegisterationForm = () => {
 
     const onFinish: FormProps<RegisterFieldType>['onFinish'] = async (values) => {
         try {
-            const userData = await register({ ...values }).unwrap()
+            if(values?.confirmPassword!==values?.password){
+                message.error('you have entered different passwords !')
+                return
+            }
+            const userData = await register({ 
+                ...values,
+                "confirm password":values.confirmPassword
+            }).unwrap()
             form.resetFields()
             message.success('Registration Successful')
             navigate('/login')
@@ -44,8 +54,18 @@ const RegisterationForm = () => {
             >
                 <Input type='text' />
             </Form.Item>
+            <Form.Item<RegisterFieldType> name="middleName" label="Middle Name"
+                rules={[{ required: true, message: 'Please Enter your Middle name' }]}
+            >
+                <Input type='text' />
+            </Form.Item>
             <Form.Item<RegisterFieldType> name="lastName" label="Last Name"
                 rules={[{ required: true, message: 'Please Enter your Last name' }]}
+            >
+                <Input type='text' />
+            </Form.Item>
+            <Form.Item<RegisterFieldType> name="organization" label="Organization"
+                rules={[{ required: true, message: 'Please Enter your organization' }]}
             >
                 <Input type='text' />
             </Form.Item>
@@ -55,6 +75,12 @@ const RegisterationForm = () => {
                 <Input type='email'/>
             </Form.Item>
             <Form.Item<RegisterFieldType> name="password" label="Password"
+
+                rules={[{ required: true, message: 'Password should be 8-20 chars ', min: 8, max: 20 }]}
+            >
+                <Input.Password />
+            </Form.Item>
+            <Form.Item<RegisterFieldType> name="confirmPassword" label="Confirm password"
 
                 rules={[{ required: true, message: 'Password should be 8-20 chars ', min: 8, max: 20 }]}
             >
