@@ -26,7 +26,9 @@ function CrudTable({ dataSource, columns, endpoint, route, actions  }: params) {
                 title:  <DeleteOutlined></DeleteOutlined> ,
                 handler (record:any)  {        
                     console.log(record) ;    
-                    const url = `${endpoint}/${record.id}` ;         
+                    const url = `${endpoint}/${record.id}` ;    
+                    
+
                 },
                 render(record:any){
                     

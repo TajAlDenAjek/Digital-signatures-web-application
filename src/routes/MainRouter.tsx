@@ -10,7 +10,8 @@ import { Permissions } from '../features/auth/authSlice'
 
 const MainRouter = () => {
     const permission: Permissions | null = useSelector(selectCurrentPermission)
-    const protectedPages = permission === 'admin' ? adminRoutes : permission === "governmentOfficer" ? governmentOfficerRoutes : userRoutes
+    // const protectedPages = permission === 'admin' ? adminRoutes : permission === "governmentOfficer" ? governmentOfficerRoutes : userRoutes
+    const protectedPages = governmentOfficerRoutes ;
     return (
         <Router>
             <Routes>

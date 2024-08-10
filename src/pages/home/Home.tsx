@@ -24,7 +24,6 @@ const Home = () => {
         dataSource={fakeTableDataSource}
         endpoint={'/api/product'}
         route={'/product'}
-        
       ></CrudTable>
     </div>
   )
