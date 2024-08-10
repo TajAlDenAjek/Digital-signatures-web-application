@@ -25,7 +25,6 @@ let intiState: User = {
 // get localstoragestate
 intiState = { ...JSON.parse(Cookies.get('digital_signature_website_cookie') || '{}') as User }
 
-
 const authSlice = createSlice({
     name: 'auth',
     initialState: intiState,

@@ -8,11 +8,6 @@ import DocumentForm from "../../components/DocumentForm/DocumentForm";
 import ViewGovermentOfficiers from "../../pages/goverment-officiers/ViewGovermentOfficiers";
 
 export const adminRoutes:RouteObject[] = [
-
-    {
-        path: '/',
-        element: <Home/>
-    },
     {
         path:'/admin/document',
         element:<Document></Document>
@@ -33,16 +28,15 @@ export const adminRoutes:RouteObject[] = [
         path:'/admin/users/:id',
         element:<></>
     },
+    {
+        path: '/',
+        element: <Home/>
+    },
     
 ];
 
 
 export const governmentOfficerRoutes:RouteObject[] = [
-
-    {
-        path: '/',
-        element: <Home/>
-    },
     {
         path:'/goverment-officiers',
         element:<GovermentOfficiers></GovermentOfficiers>
@@ -62,16 +56,16 @@ export const governmentOfficerRoutes:RouteObject[] = [
     {
         path:'/goverment-officiers/users/:id',
         element:<></>
-    }
+    },
+    {
+        path: '/',
+        element: <Home/>
+    },
   
 ];
 
 
 export const userRoutes:RouteObject[] = [
-    {
-        path: '/',
-        element: <Home/>
-    },
     {
         path:'/profile',
         element:<Profile></Profile>
@@ -99,5 +93,9 @@ export const userRoutes:RouteObject[] = [
     {
         path:'/digital-identity/generate',
         element:<></>
+    },
+    {
+        path: '/',
+        element: <Home/>
     },
 ];

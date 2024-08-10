@@ -27,7 +27,7 @@ const MainRouter = () => {
                         ))
                     }
                 </Route>
-                <Route element={<RequireAuth isRequired={false} />}>
+                <Route element={<RequireAuth isRequired={true} />}>
                     <Route element={<LayoutContainer />}>
                         {
                             protectedPages.map(({ path, element }, index) => (
