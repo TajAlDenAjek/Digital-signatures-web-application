@@ -67,6 +67,6 @@ export default authSlice.reducer
 
 //getters
 export const selectCurrentId = (state: RootState) => state.auth.id
-export const selectCurrentFirstName = (state: RootState) => state.auth.firstName
+export const selectCurrentUserName = (state: RootState) => state.auth.firstName
 export const selectCurrentPermission = (state: RootState) => state.auth.permission
 export const selectCurrentToken = (state: RootState) => state.auth.token
