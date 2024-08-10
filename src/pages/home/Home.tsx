@@ -4,6 +4,9 @@ import { adminRoutes, governmentOfficerRoutes,userRoutes } from '../../routes/pr
 import { useSelector } from 'react-redux'
 import { selectCurrentPermission } from '../../features/auth/authSlice'
 import { Permissions } from '../../features/auth/authSlice'
+import CrudTable from '../../components/CrudTable'
+import { testColumns } from '../../constants/columns'
+import { fakeTableDataSource } from '../../constants/fake'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -15,7 +18,13 @@ const Home = () => {
 
   return (
     <div>
-      <h1>redirecting...</h1>
+      {/* <h1>redirecting...</h1> */}
+      <CrudTable
+        columns={testColumns}
+        dataSource={fakeTableDataSource}
+        endpoint={'/api/product'}
+        route={'/product'}
+      ></CrudTable>
     </div>
   )
 }

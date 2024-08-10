@@ -4,3 +4,8 @@
     box-sizing: border-box;
     font-family:'Open-sans';
 }
+
+.avatar-uploader > .ant-upload {
+    width: 500px;
+    height: 100rem;
+}
