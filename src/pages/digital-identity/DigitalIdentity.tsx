@@ -18,13 +18,22 @@ function DigitalIdentity() {
   function onChange(value:any) {
     setCaptchaPassed(1);
   }
-  const onFileChange = (type:any)=>{
-    // if(type == 1 ) {
-      
-    // }
-    // else{
-
-    // }
+  const onFileChange = (event: any , type:any)=>{
+    // handleChange = info => {
+    if (info.file.status === 'uploading') {
+        this.setState({ loading: true });
+        return;
+    }
+    if (info.file.status === 'done') {
+        // Get this url from response in real world.
+        getBase64(info.file.originFileObj, imageUrl =>
+          this.setState({
+            imageUrl,
+            loading: false,
+          }),
+        );
+    }
+    // };
   }
   return (
     <>
@@ -54,7 +63,7 @@ function DigitalIdentity() {
                   // beforeUpload={}
                   action={`${import.meta.env.BACKEND_URL}/document`}
                   // data={{user_id }}
-                  // onChange={handleChange}
+                  onChange={(event:any)=>onFileChange(event, 1 )}
                   >
               { uploadButton}
               </Upload>
@@ -71,7 +80,7 @@ function DigitalIdentity() {
                   // beforeUpload={}
                   action={`${import.meta.env.BACKEND_URL}/document`}
                   // data={{user_id }}
-                  // onChange={handleChange}
+                  onChange={(event)=>onFileChange(event , 2 )}
               >
                 { uploadButton}
               </Upload>
