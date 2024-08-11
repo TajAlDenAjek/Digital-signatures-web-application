@@ -2,8 +2,11 @@ import React from 'react'
 import CrudTable from '../../components/CrudTable'
 import { usersColumn } from '../../constants/columns'
 import { fakeUsersDataSource } from '../../constants/fake'
-
-function Users() {
+type params = {
+  type: string ;
+}
+function Users({type}:params ) {
+  // type : goverment-officier , user, admin 
   return (
     <CrudTable
         columns={usersColumn}

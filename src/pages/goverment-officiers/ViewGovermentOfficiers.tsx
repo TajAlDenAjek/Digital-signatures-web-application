@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import type { FormProps } from 'antd';
 import { Button, Form, Input , Row , Col, DatePicker, Select, Upload } from 'antd';
 import Icon from '@ant-design/icons/lib/components/Icon';
+import { useLocation } from 'react-router-dom';
 
 type FieldType = {
     email: string ;
@@ -19,10 +20,12 @@ type params =  {
     disabled: boolean 
 };
 
-const ViewGovermentOfficiers = ({disabled}:params) => {
+const ViewGovermentOfficiers = () => {
   
   
- console.log(disabled);
+//  console.log(disabled);
+  const location = useLocation();
+  const disabled: any  = !location.pathname.includes('edit') ;
  
   useEffect(() => {
     
@@ -45,17 +48,18 @@ const ViewGovermentOfficiers = ({disabled}:params) => {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
           layout='vertical'
+          disabled={disabled}
         >
           <Form.Item name="email" label="Email"
                 rules={[{ required: true, message: 'Please Enter your email' }]}
                 
               >
-                <Input type='email' disabled={disabled} />
+                <Input type='email' />
           </Form.Item>
           <Form.Item name="password" label="password"
                 rules={[{ required: true, message: 'Please Enter a Password' }]}
               >
-                <Input type='password' disabled={disabled} />
+                <Input type='password' />
           </Form.Item>
           {
             !disabled ? 
