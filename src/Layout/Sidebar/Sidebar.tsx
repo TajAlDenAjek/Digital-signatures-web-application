@@ -10,7 +10,7 @@ import './style.scss'
 const Sidebar = () => {
     const navigate = useNavigate()
     const permission: Permissions | null = useSelector(selectCurrentPermission)
-    const items = permission === 'admin' ? adminPages : permission === "governmentOfficer" ? governmentOfficerPages : userPages
+    const items = permission === 'admin' ? adminPages : permission === "governmentOfficial" ? governmentOfficerPages : userPages
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();

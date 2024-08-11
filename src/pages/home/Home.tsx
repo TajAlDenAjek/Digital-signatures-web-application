@@ -11,7 +11,8 @@ import { fakeTableDataSource } from '../../constants/fake'
 const Home = () => {
   const navigate = useNavigate()
   const permission: Permissions | null = useSelector(selectCurrentPermission)
-  const navigateTo = permission === 'admin' ? adminRoutes[0]?.path : permission === "governmentOfficer" ? governmentOfficerRoutes[0]?.path : userRoutes[0]?.path
+  console.log(permission,'permmision')
+  const navigateTo = permission === 'admin' ? adminRoutes[0]?.path : permission === "governmentOfficial" ? governmentOfficerRoutes[0]?.path : userRoutes[0]?.path
   useEffect(() => {
     navigate(String(navigateTo))
   }, [])
