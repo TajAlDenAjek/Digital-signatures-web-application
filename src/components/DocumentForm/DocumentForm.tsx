@@ -28,6 +28,14 @@ const DocumentForm = () => {
     values = {...values , user_id} ;
     console.log(values);
   };
+  const [state , setState] = useState({loading:false});
+
+  const uploadButton = (
+    <div>
+      <Icon type={state.loading ? 'loading' : 'plus'} />
+      <div className="ant-upload-text">Upload</div>
+    </div>
+  );
   const handleChange = (info:any) => {
     if (info.file.status === 'uploading') {
       setState({ loading: true });
@@ -36,7 +44,7 @@ const DocumentForm = () => {
     if (info.file.status === 'done') {
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, (imageUrl:any) =>{
-        console.log(imageUrl);
+        // console.log(imageUrl);
         setState({
           imageUrl,
           loading: false,
@@ -46,14 +54,10 @@ const DocumentForm = () => {
     }
   };
 
-  const [state ,setState ]: any = useState({loading:false});
   
-  const uploadButton = (
-    <div>
-      <Icon type={state.loading ? 'loading' : 'plus'} />
-      <div className="ant-upload-text">Upload</div>
-    </div>
-  );
+  
+
+
  
   useEffect(() => {
     

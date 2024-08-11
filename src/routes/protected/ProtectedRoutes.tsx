@@ -6,6 +6,7 @@ import GovermentOfficiers from "../../pages/goverment-officiers/GovermentOfficie
 import Users from "../../pages/users/Users";
 import DocumentForm from "../../components/DocumentForm/DocumentForm";
 import ViewGovermentOfficiers from "../../pages/goverment-officiers/ViewGovermentOfficiers";
+import DigitalIdentity from "../../pages/digital-identity/DigitalIdentity";
 
 export const adminRoutes:RouteObject[] = [
     {
@@ -14,19 +15,35 @@ export const adminRoutes:RouteObject[] = [
     },
     {
         path:'/admin/document/:id',
-        element:<></>
-    },
-    {
-        path:'/admin/document/payment',
-        element:<></>
+        element:<h1>not implemneted - T1 </h1>
     },
     {
         path:'/admin/users',
-        element:<Users></Users>
+        element:<Users type={'user'} ></Users>
     },
     {
         path:'/admin/users/:id',
-        element:<></>
+        element:<h1>not implemneted - T3 </h1> 
+    },
+    {
+        path:'/admin/users/:id/edit',
+        element:<h1>not implemented - T4 </h1>
+    },
+    {
+        path:'/admin/goverment-officiers',
+        element:<Users type={'goverment-officier'} ></Users>
+    },
+    {
+        path:'/admin/goverment-officiers/create',
+        element: <h1> not implemented - T5 </h1>
+    },
+    {
+        path:'/admin/goverment-officiers/:id',
+        element:<ViewGovermentOfficiers  />
+    },
+    {
+        path:'/admin/goverment-officiers/:id/edit',
+        element:<ViewGovermentOfficiers  /> 
     },
     {
         path: '/',
@@ -38,24 +55,28 @@ export const adminRoutes:RouteObject[] = [
 
 export const governmentOfficerRoutes:RouteObject[] = [
     {
-        path:'/goverment-officiers',
-        element:<GovermentOfficiers></GovermentOfficiers>
+        path:'/gov/users',
+        element:<Users type={'user'} ></Users>
     },
     {
-        path:'/goverment-officiers/:id',
-        element:<ViewGovermentOfficiers disabled={1} ></ViewGovermentOfficiers >
+        path:'/gov/users/:id',
+        element:<h1>not implmented - T3 </h1>
     },
     {
-        path:'/goverment-officiers/:id/edit',
-        element:<ViewGovermentOfficiers disabled={0} /> 
+        path:'/gov/users/:id/edit',
+        element:<h1> not implemented - T4 </h1>
     },
     {
-        path:'/goverment-officiers/users',
-        element:<Users></Users>
+        path:'/gov/document',
+        element: <Document />
     },
     {
-        path:'/goverment-officiers/users/:id',
-        element:<></>
+        path:'/gov/document/:id',
+        element: <h1>not implemented - T1 </h1>
+    },
+    {
+        path:'/gov/document/:id/edit',
+        element: <h1> not implemented - T2 </h1>
     },
     {
         path: '/',
@@ -75,24 +96,28 @@ export const userRoutes:RouteObject[] = [
         element:<Document></Document>
     },
     {
+        path:'/document/:id',
+        element:<h1>not implemented - T1 </h1>
+    },
+    {
+        path:'/document/:id/edit',
+        element:<h1>not implemented - T2 </h1>
+    },
+    {
         path:'/document/create',
         element:<DocumentForm></DocumentForm>
     },
-    // {
-    //     path:'/document/:id',
-    //     element:<></>
-    // },
     {
-        path:'/document/payment',
-        element:<></>
+        path:'/document/:id/payment',
+        element:<h1>not implemneted - T6 </h1>
     },
     {
         path:'/document/sign',
-        element:<></>
+        element:<h1>not implemneted - T7 </h1>
     },
     {
         path:'/digital-identity/generate',
-        element:<></>
+        element:<DigitalIdentity/>
     },
     {
         path: '/',
