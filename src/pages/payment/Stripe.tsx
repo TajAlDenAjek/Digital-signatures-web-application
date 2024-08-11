@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import {loadStripe} from '@stripe/stripe-js';
+// https://www.npmjs.com/package/@stripe/react-stripe-js
 import {
   PaymentElement,
   Elements,

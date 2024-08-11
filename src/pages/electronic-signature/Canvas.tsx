@@ -2,6 +2,9 @@ import { ClearOutlined } from '@ant-design/icons';
 import { Button, Row } from 'antd';
 import React, { Component } from 'react';
 // import { v4 } from 'uuid';
+
+// https://codeburst.io/build-a-live-paint-application-with-react-ed534b403706?gi=0df5e218d8d2
+
 class Canvas extends Component {
   ctx: any ;
   canvas: any ;
