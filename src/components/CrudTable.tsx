@@ -6,16 +6,21 @@ import { Link, useNavigate } from "react-router-dom";
 interface params {
     dataSource: any[]
     columns: any[]
-    actions?: any[]
     endpoint: string
-    route: string
+    route: string,
+    actions?: any[]
+    defaultActions? : boolean 
 }
 
 
-function CrudTable({ dataSource, columns, endpoint, route, actions  }: params) {
+function CrudTable({ dataSource, columns, endpoint, route, actions , defaultActions  }: params) {
     const navigate = useNavigate() ;
-    if(!actions)
+    if(!actions || (actions && defaultActions) ){
+        if(!actions){
+            actions = [] ;
+        }
         actions = [
+            ...actions,
             {
                 title: <FolderViewOutlined></FolderViewOutlined> ,
                 handler(record:any) {
@@ -54,6 +59,8 @@ function CrudTable({ dataSource, columns, endpoint, route, actions  }: params) {
             },
         ]    
 
+    }
+        
 
     const actionsColumn: any[] = [
 

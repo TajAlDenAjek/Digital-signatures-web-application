@@ -7,6 +7,7 @@ import DocumentForm from "../../components/DocumentForm/DocumentForm";
 import ViewGovermentOfficiers from "../../pages/goverment-officiers/ViewGovermentOfficiers";
 import DigitalIdentity from "../../pages/digital-identity/DigitalIdentity";
 import ElectronicSignature from "../../pages/electronic-signature/ElectronicSignature";
+import Stripe from "../../pages/payment/Stripe";
 
 export const adminRoutes:RouteObject[] = [
     {
@@ -109,7 +110,7 @@ export const userRoutes:RouteObject[] = [
     },
     {
         path:'/document/:id/payment',
-        element:<h1>not implemneted - T6 </h1>
+        element:<Stripe></Stripe>
     },
     {
         path:'/document/sign',
