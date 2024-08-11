@@ -1,7 +1,7 @@
 import { RootState } from '../../app/store'
 import { createSlice } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie';
-export type Permissions = "admin" | "governmentOfficer" |  "user"
+export type Permissions = "admin" | "governmentOfficial" |  "user"
 
 // type of user state information
 export type User = {

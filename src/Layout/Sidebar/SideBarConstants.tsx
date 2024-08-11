@@ -34,13 +34,13 @@ export const governmentOfficerPages: SideBarPage[] = [
         key: '1',
         icon: React.createElement(UserOutlined),
         label: `Manage Documents`,
-        url: '/admin/document'
+        url: '/gov/document'
     },
     {
         key: '2',
         icon: React.createElement(UserOutlined),
         label: `Manage Users`,
-        url: '/admin/users'
+        url: '/gov/users'
     }
 ]
 
