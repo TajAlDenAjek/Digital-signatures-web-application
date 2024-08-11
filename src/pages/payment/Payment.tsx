@@ -4,7 +4,8 @@ import Stripe from './Stripe';
 function Payment() {
   return (
     <>
-        USE VPN
+        <h1> USE VPN HEHEHE </h1>
+        
         <Stripe></Stripe>
     </>
   )

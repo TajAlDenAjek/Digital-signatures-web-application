@@ -7,6 +7,7 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
+import { Button } from 'antd';
 
 const CheckoutForm = () => {
   const stripe: any  = useStripe();
@@ -60,9 +61,11 @@ const CheckoutForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <PaymentElement />
-      <button type="submit" disabled={!stripe || !elements}>
-        Pay
-      </button>
+      <Button style={{backgroundColor:'#2f88e3'}} size='large'  type="submit" disabled={!stripe || !elements}>
+        <h2>
+          Pay
+        </h2>
+      </Button>
       {/* Show error message to your customers */}
       {errorMessage && <div>{errorMessage}</div>}
     </form>
