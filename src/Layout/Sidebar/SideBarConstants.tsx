@@ -63,4 +63,10 @@ export const userPages: SideBarPage[] = [
         label: `Digital identity`,
         url: '/digital-identity/generate'
     }, 
+    {
+        key: '4',
+        icon: React.createElement(PicCenterOutlined),
+        label: `Electonic Signature`,
+        url: '/electronic-signature'
+    }, 
 ]
