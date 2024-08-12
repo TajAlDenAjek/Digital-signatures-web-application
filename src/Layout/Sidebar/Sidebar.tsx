@@ -15,10 +15,11 @@ const Sidebar = () => {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
     return (
-        <Sider
+        <Sider  
 
             breakpoint="lg"
             collapsedWidth="0"
+            width={320}
             onBreakpoint={(broken) => {
             }}
             onCollapse={(collapsed, type) => {
@@ -28,6 +29,8 @@ const Sidebar = () => {
             <div className="demo-logo-vertical" >Digital Signature</div>
             <Menu
                 // selectedKeys={}
+                defaultOpenKeys={['0','1','2','3','4']}
+                style={{fontWeight:'bold'}}
                 theme="dark"
                 mode="inline"
                 items={items}

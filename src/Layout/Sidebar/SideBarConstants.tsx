@@ -1,5 +1,5 @@
 import { UserAddOutlined, FormOutlined, PicCenterOutlined, UserOutlined, TeamOutlined, DollarOutlined, FileTextOutlined } from '@ant-design/icons';
-import React from 'react'
+import React, { Children } from 'react'
 
 interface SideBarPage {
     key: any,
@@ -44,13 +44,21 @@ export const governmentOfficerPages: SideBarPage[] = [
     }
 ]
 
-export const userPages: SideBarPage[] = [
+export const userPages: SideBarPage[]|any = [
     {
-        key: '1',
-        icon: React.createElement(PicCenterOutlined),
-        label: `Profile`,
-        url: '/profile'
+        key:'0',
+        icon:React.createElement(PicCenterOutlined),
+        label:'Settings',
+        children:[
+            {
+                key: '1',
+                icon: React.createElement(PicCenterOutlined),
+                label: `Profile`,
+                url: '/profile'
+            },
+        ]
     },
+    
     {
         key: '2',
         icon: React.createElement(PicCenterOutlined),
