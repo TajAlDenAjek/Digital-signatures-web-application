@@ -1,11 +1,13 @@
 export const fakeTableDataSource: any[]= [ 
     {
         key: '1',
+        id:1,
         name: 'John',
         email: 'email@email.com'
     },
     {
         key: '2',
+        id:2,
         name: 'John',
         email: 'email@email.com'
     },
@@ -14,11 +16,13 @@ export const fakeTableDataSource: any[]= [
 export const fakeDocumentDataSource : any[] = [
     {
         key:'1',
+        id:1,
         contractName:'House',
         status:'pending'
     },
     {
         key:'2',
+        id:2,
         contractName:'HOME',
         status:'done'
     }
@@ -27,6 +31,7 @@ export const fakeDocumentDataSource : any[] = [
 export const fakeAdminsDataSource : any[] = [ 
     {
         key:'1',
+        id:1,
         firstName:'Mo',
         lastName:'Mo',
         role:'admin',
@@ -34,6 +39,7 @@ export const fakeAdminsDataSource : any[] = [
     },
     {
         key:'2',
+        id:2,
         firstName:'Mo',
         lastName:'Mo',
         role:'goverment-officier',
@@ -44,6 +50,7 @@ export const fakeAdminsDataSource : any[] = [
 export const fakeUsersDataSource :any[] = [
     {
         key:'1',
+        id:1,
         firstName:'mo',
         middleName:'mo',
         lastName:'mo',

@@ -2,11 +2,14 @@ import Home from "../../pages/home/Home";
 import type { RouteObject } from "react-router-dom";
 import Profile from "../../pages/profile/Profile";
 import Document from "../../pages/document/Document";
-import GovermentOfficiers from "../../pages/goverment-officiers/GovermentOfficiers";
 import Users from "../../pages/users/Users";
 import DocumentForm from "../../components/DocumentForm/DocumentForm";
 import ViewGovermentOfficiers from "../../pages/goverment-officiers/ViewGovermentOfficiers";
 import DigitalIdentity from "../../pages/digital-identity/DigitalIdentity";
+import ElectronicSignature from "../../pages/electronic-signature/ElectronicSignature";
+import Stripe from "../../pages/payment/Stripe";
+import Payment from "../../pages/payment/Payment";
+import Fingerprint from "../../pages/fingerprint/Fingerprint";
 
 export const adminRoutes:RouteObject[] = [
     {
@@ -109,7 +112,7 @@ export const userRoutes:RouteObject[] = [
     },
     {
         path:'/document/:id/payment',
-        element:<h1>not implemneted - T6 </h1>
+        element:<Payment></Payment>
     },
     {
         path:'/document/sign',
@@ -118,6 +121,14 @@ export const userRoutes:RouteObject[] = [
     {
         path:'/digital-identity/generate',
         element:<DigitalIdentity/>
+    },
+    {
+        path:'/electronic-signature',
+        element:<ElectronicSignature></ElectronicSignature>
+    },
+    {
+        path:'/fingerprint',
+        element:<Fingerprint></Fingerprint>
     },
     {
         path: '/',

@@ -12,7 +12,10 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.6",
+    "@passwordless-id/webauthn": "^2.0.4",
     "@reduxjs/toolkit": "^2.2.3",
+    "@stripe/react-stripe-js": "^2.7.3",
+    "@stripe/stripe-js": "^4.2.0",
     "antd": "^5.16.0",
     "js-cookie": "^3.0.5",
     "react": "^18.2.0",
