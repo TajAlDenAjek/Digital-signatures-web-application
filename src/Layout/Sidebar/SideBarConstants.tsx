@@ -68,5 +68,11 @@ export const userPages: SideBarPage[] = [
         icon: React.createElement(PicCenterOutlined),
         label: `Electonic Signature`,
         url: '/electronic-signature'
-    }, 
+    },
+    {
+        key: '5',
+        icon: React.createElement(PicCenterOutlined),
+        label: `Fingerprint`,
+        url: '/fingerprint'
+    },  
 ]

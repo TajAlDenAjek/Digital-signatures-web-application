@@ -9,6 +9,7 @@ import DigitalIdentity from "../../pages/digital-identity/DigitalIdentity";
 import ElectronicSignature from "../../pages/electronic-signature/ElectronicSignature";
 import Stripe from "../../pages/payment/Stripe";
 import Payment from "../../pages/payment/Payment";
+import Fingerprint from "../../pages/fingerprint/Fingerprint";
 
 export const adminRoutes:RouteObject[] = [
     {
@@ -124,6 +125,10 @@ export const userRoutes:RouteObject[] = [
     {
         path:'/electronic-signature',
         element:<ElectronicSignature></ElectronicSignature>
+    },
+    {
+        path:'/fingerprint',
+        element:<Fingerprint></Fingerprint>
     },
     {
         path: '/',
