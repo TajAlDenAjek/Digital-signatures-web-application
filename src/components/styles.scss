@@ -9,4 +9,12 @@
     .ant-table-cell{
         text-align: center;
     }
+    .table-actions{
+        display: flex;
+        // justify-content: ;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        width: 80%;
+    }
 }
