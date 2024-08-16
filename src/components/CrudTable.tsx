@@ -24,7 +24,7 @@ function CrudTable({ dataSource, columns, endpoint, route, actions, defaultActio
             ...actions,
             {
                 title:
-                    <Tooltip title='view'>
+                    <Tooltip title='View Record'>
                         <EyeOutlined style={{ fontSize: '150%' }}></EyeOutlined>
                     </Tooltip>
                 ,
@@ -33,7 +33,9 @@ function CrudTable({ dataSource, columns, endpoint, route, actions, defaultActio
                 },
             },
             {
-                title: "Delete",
+                title: <Tooltip title='Delete record'>
+                    <DeleteOutlined style={{ fontSize: '150%', color: 'red' }} />
+                </Tooltip>,
                 handler(record: any) {
                     console.log(record);
                     const url = `${endpoint}/${record.id}`;
@@ -49,15 +51,18 @@ function CrudTable({ dataSource, columns, endpoint, route, actions, defaultActio
                         cancelText="No"
                         onConfirm={() => this.handler(record)}
                     >
-                        <a>
-                            <DeleteOutlined></DeleteOutlined>
-                        </a>
-                    </Popconfirm>
+                        <Tooltip title='Delete Record'>
+                            <DeleteOutlined style={{ fontSize: '150%', color: 'red' }} />
+                        </Tooltip>
+                    </Popconfirm >
 
                 }
             },
             {
-                title: <EditOutlined></EditOutlined>,
+                title:
+                    <Tooltip title='Edit Record'>
+                        <EditOutlined style={{ fontSize: '150%', color: 'green' }} />
+                    </Tooltip>,
                 handler(record: any) {
                     navigate(`${route}/${record.id}/edit`)
                 },
