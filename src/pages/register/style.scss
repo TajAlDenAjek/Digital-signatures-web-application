@@ -18,14 +18,15 @@
     // display: flex;
     justify-content: center;
     align-items: center;
-    // height: 600px;
+    height: 600px;
     width: 410px;
     z-index: 100;
     box-shadow: 3px black ;
 }
 .form-elements-register{
-    overflow-y: auto;
-    height: 600px;
+    overflow-y: scroll;
+    // height: 600px;
+    max-height: 400px;
 }
 .register-title{
     align-self: flex-start;
