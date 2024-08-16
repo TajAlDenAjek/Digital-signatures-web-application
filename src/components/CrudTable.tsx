@@ -3,6 +3,7 @@
 import { DeleteOutlined, EditOutlined, FolderViewOutlined, FundViewOutlined } from "@ant-design/icons";
 import { Popconfirm, Table } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import './styles.scss'
 interface params {
     dataSource: any[]
     columns: any[]
@@ -91,38 +92,10 @@ function CrudTable({ dataSource, columns, endpoint, route, actions , defaultActi
 
     ]
 
-
-
-
-
-
-
-
-
-
-
-
     columns = [...columns, ...actionsColumn]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return <>
-        <div>
+        <div className="crud-table">
             <Table
                 dataSource={dataSource}
                 columns={columns}
