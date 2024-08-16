@@ -49,43 +49,46 @@ const RegisterationForm = () => {
             autoComplete='off'
             onFinish={onFinish}
         >
-            <Form.Item<RegisterFieldType> name="firstName" label="First Name"
-                rules={[{ required: true, message: 'Please Enter your First name' }]}
-            >
-                <Input type='text' />
-            </Form.Item>
-            <Form.Item<RegisterFieldType> name="middleName" label="Middle Name"
-                rules={[{ required: true, message: 'Please Enter your Middle name' }]}
-            >
-                <Input type='text' />
-            </Form.Item>
-            <Form.Item<RegisterFieldType> name="lastName" label="Last Name"
-                rules={[{ required: true, message: 'Please Enter your Last name' }]}
-            >
-                <Input type='text' />
-            </Form.Item>
-            <Form.Item<RegisterFieldType> name="organization" label="Organization"
-                rules={[{ required: true, message: 'Please Enter your organization' }]}
-            >
-                <Input type='text' />
-            </Form.Item>
-            <Form.Item<RegisterFieldType> name="email" label="Email"
-                rules={[{ required: true, message: 'Please Enter your email' }]}
-            >
-                <Input type='email'/>
-            </Form.Item>
-            <Form.Item<RegisterFieldType> name="password" label="Password"
+            <div className="form-elements-register">
+                <Form.Item<RegisterFieldType> name="firstName" label="First Name"
+                    rules={[{ required: true, message: 'Please Enter your First name' }]}
+                >
+                    <Input type='text' />
+                </Form.Item>
+                <Form.Item<RegisterFieldType> name="middleName" label="Middle Name"
+                    rules={[{ required: true, message: 'Please Enter your Middle name' }]}
+                >
+                    <Input type='text' />
+                </Form.Item>
+                <Form.Item<RegisterFieldType> name="lastName" label="Last Name"
+                    rules={[{ required: true, message: 'Please Enter your Last name' }]}
+                >
+                    <Input type='text' />
+                </Form.Item>
+                <Form.Item<RegisterFieldType> name="organization" label="Organization"
+                    rules={[{ required: true, message: 'Please Enter your organization' }]}
+                >
+                    <Input type='text' />
+                </Form.Item>
+                <Form.Item<RegisterFieldType> name="email" label="Email"
+                    rules={[{ required: true, message: 'Please Enter your email' }]}
+                >
+                    <Input type='email'/>
+                </Form.Item>
+                <Form.Item<RegisterFieldType> name="password" label="Password"
 
-                rules={[{ required: true, message: 'Password should be 8-20 chars ', min: 8, max: 20 }]}
-            >
-                <Input.Password />
-            </Form.Item>
-            <Form.Item<RegisterFieldType> name="confirmPassword" label="Confirm password"
+                    rules={[{ required: true, message: 'Password should be 8-20 chars ', min: 8, max: 20 }]}
+                >
+                    <Input.Password />
+                </Form.Item>
+                <Form.Item<RegisterFieldType> name="confirmPassword" label="Confirm password"
 
-                rules={[{ required: true, message: 'Password should be 8-20 chars ', min: 8, max: 20 }]}
-            >
-                <Input.Password />
-            </Form.Item>
+                    rules={[{ required: true, message: 'Password should be 8-20 chars ', min: 8, max: 20 }]}
+                >
+                    <Input.Password />
+                </Form.Item>
+            </div>
+           
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                 <Button type='primary' htmlType='submit' disabled={isLoading}>{isLoading ? "Signing up..." : "Sign up"}</Button>
             </Form.Item>
