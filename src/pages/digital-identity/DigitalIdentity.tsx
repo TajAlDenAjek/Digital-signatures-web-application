@@ -1,5 +1,5 @@
 import Icon from '@ant-design/icons/lib/components/Icon';
-import { Col, Form, Row, Upload } from 'antd'
+import { Col, Form, Row, Select, Tag, Upload } from 'antd'
 import React, { useState } from 'react'
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -8,13 +8,14 @@ import ReCAPTCHA from "react-google-recaptcha";
 function DigitalIdentity() {
   const [state , setState ] = useState({loading:false}) ;
   const [captchaPassed , setCaptchaPassed] = useState(0) ;
-  
-  const uploadButton = (
-    <div>
-      <Icon type={state.loading ? 'loading' : 'plus'} />
-      <div className="ant-upload-text">Upload</div>
-    </div>
-  );
+  const [options , setOptions ] = useState()
+  const options = [
+    { value: 'gold' },
+    { value: 'lime' },
+    { value: 'green' },
+    { value: 'cyan' },
+  ];
+
   function onChange(value:any) {
     setCaptchaPassed(1);
   }
@@ -35,6 +36,25 @@ function DigitalIdentity() {
     }
     // };
   }
+  const tagRender = (props:any) => {
+    const { label, value, closable, onClose } = props;
+    const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
+      event.preventDefault();
+      event.stopPropagation();
+    };
+    return (
+      <Tag
+        color={value}
+        onMouseDown={onPreventMouseDown}
+        closable={closable}
+        onClose={onClose}
+        style={{ marginInlineEnd: 4 }}
+      >
+        
+        {label}
+      </Tag>
+    );
+  };
   return (
     <>
       <Row>
@@ -58,6 +78,7 @@ function DigitalIdentity() {
                   listType="picture-card"
                   className="avatar-uploader"
                   showUploadList={false}
+                  
                   // style={{width}}
                   // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                   // beforeUpload={}
@@ -65,9 +86,14 @@ function DigitalIdentity() {
                   // data={{user_id }}
                   onChange={(event:any)=>onFileChange(event, 1 )}
                   >
-              { uploadButton}
+              <div>
+                <Icon type={state.loading ? 'loading' : 'plus'} />
+                <div className="ant-upload-text">Front </div>
+              </div>
               </Upload>
-              <label  > Front </label>              
+              
+                           
+
             </Col>
             <Col span={12}>
               <Upload
@@ -82,15 +108,26 @@ function DigitalIdentity() {
                   // data={{user_id }}
                   onChange={(event)=>onFileChange(event , 2 )}
               >
-                { uploadButton}
+              <div>
+                <Icon type={state.loading ? 'loading' : 'plus'} />
+                <div className="ant-upload-text">Back</div>
+              </div>
               </Upload>
-              <label  > Back </label>
+              
             </Col>
           </Row>
+          <Select
+            mode="multiple"
+            tagRender={tagRender}
+            defaultValue={['gold', 'cyan']}
+            style={{ width: '100%' }}
+            options={options}
+          />
           <ReCAPTCHA
             sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
             onChange={onChange}
           />
+
           
       </Form>
       </Col>
