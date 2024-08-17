@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import {loadStripe} from '@stripe/stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 // https://www.npmjs.com/package/@stripe/react-stripe-js
 import {
   PaymentElement,
@@ -11,12 +11,12 @@ import {
 import { Button } from 'antd';
 
 const CheckoutForm = () => {
-  const stripe: any  = useStripe();
+  const stripe: any = useStripe();
   const elements = useElements();
 
-  const [errorMessage, setErrorMessage] : [any , any ]= useState(null);
+  const [errorMessage, setErrorMessage]: [any, any] = useState(null);
 
-  const handleSubmit = async (event:any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
 
     if (elements == null) {
@@ -24,7 +24,7 @@ const CheckoutForm = () => {
     }
 
     // Trigger form validation and wallet collection
-    const {error: submitError} = await elements.submit();
+    const { error: submitError } = await elements.submit();
     if (submitError) {
       // Show error to your customer
       setErrorMessage(submitError.message);
@@ -36,9 +36,9 @@ const CheckoutForm = () => {
       method: 'POST',
     });
 
-    const {client_secret: clientSecret} = await res.json();
+    const { client_secret: clientSecret } = await res.json();
 
-    const {error} = await stripe.confirmPayment({
+    const { error } = await stripe.confirmPayment({
       //`Elements` instance that was used to create the Payment Element
       elements,
       clientSecret,
@@ -62,10 +62,8 @@ const CheckoutForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <PaymentElement />
-      <Button style={{backgroundColor:'#2f88e3'}} size='large'  type="submit" disabled={!stripe || !elements}>
-        <h2>
-          Pay
-        </h2>
+      <Button style={{ display: 'felx', margin: '15px', justifyContent: 'center', alignItems: 'center' }} size='large' type="primary" htmlType="submit" disabled={!stripe || !elements}  >
+        Pay
       </Button>
       {/* Show error message to your customers */}
       {errorMessage && <div>{errorMessage}</div>}
@@ -90,4 +88,4 @@ const Stripe = () => (
     <CheckoutForm />
   </Elements>
 );
-export default Stripe ;
+export default Stripe;

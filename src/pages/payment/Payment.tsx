@@ -4,7 +4,7 @@ import Stripe from './Stripe';
 function Payment() {
   return (
     <>
-        <h1> USE VPN HEHEHE </h1>
+        <h1 style={{marginBottom:'10px'}}> Payment </h1>
         
         <Stripe></Stripe>
     </>
