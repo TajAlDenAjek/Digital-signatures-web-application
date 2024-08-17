@@ -10,7 +10,7 @@ import ElectronicSignature from "../../pages/electronic-signature/ElectronicSign
 import Stripe from "../../pages/payment/Stripe";
 import Payment from "../../pages/payment/Payment";
 import Fingerprint from "../../pages/fingerprint/Fingerprint";
-
+import GovermentOfficiers from "../../pages/goverment-officiers/GovermentOfficiers";
 export const adminRoutes:RouteObject[] = [
     {
         path:'/admin/document',
@@ -34,7 +34,7 @@ export const adminRoutes:RouteObject[] = [
     },
     {
         path:'/admin/goverment-officiers',
-        element:<Users type={'goverment-officier'} ></Users>
+        element:<GovermentOfficiers />
     },
     {
         path:'/admin/goverment-officiers/create',
