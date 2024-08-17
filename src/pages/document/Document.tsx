@@ -4,8 +4,10 @@ import { documentColumns } from "../../constants/columns";
 import { fakeDocumentDataSource } from "../../constants/fake";
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "antd";
+import { useGetDocumentsQuery } from "../../features/documents/documentsApiSlice";
 const Document = () => {
     const navigate = useNavigate();
+    const {data: documents , isLoading } = useGetDocumentsQuery({}) ;
 
     const actions: any[] = [
         {
@@ -18,11 +20,12 @@ const Document = () => {
             }
         }
     ]
+    console.log('documents',documents) 
 
     return <>
         <CrudTable
             columns={documentColumns}
-            dataSource={fakeDocumentDataSource}
+            dataSource={documents}
             endpoint="/api/document"
             route={"/document"}
             actions={actions}

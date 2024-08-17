@@ -67,13 +67,18 @@ export const adminsColumns : any[] = [
 
 export const documentColumns : any[]= [
     {
-        title:'Contract Name',
-        dataIndex:'contractName',
-        key:'contractName'
+        title:'Document Name',
+        dataIndex:'documentName',
+        key:'documentName'
     },
     {
-        title:'Status',
-        dataIndex:'status',
-        key:'status'
-    }
+        title:'Document Status',
+        dataIndex:'documentStatus',
+        key:'documentStatus'
+    },
+    {
+        title:'Counter',
+        dataIndex:'counter',
+        key:'counter'
+    },
 ];
