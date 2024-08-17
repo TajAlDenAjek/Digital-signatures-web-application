@@ -6,7 +6,7 @@ type params = {
   type: string ;
 }
 function Users({type}:params ) {
-  
+
   return (
     <CrudTable
         columns={usersColumn}
