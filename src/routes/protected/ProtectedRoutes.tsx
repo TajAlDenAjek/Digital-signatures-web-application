@@ -15,6 +15,9 @@ import MyDocuments from "../../pages/document/MyDocuments";
 import SingleDocument from "../../pages/document/SingleDocument";
 import ManageUsers from "../../pages/AdminPages/ManageUsers";
 import ManageAdmins from "../../pages/AdminPages/ManageAdmins";
+import ManageContracts from "../../pages/AdminPages/ManageContracts";
+
+
 export const adminRoutes: RouteObject[] = [
     {
         path: '/admin/users',
@@ -26,7 +29,7 @@ export const adminRoutes: RouteObject[] = [
     },
     {
         path: '/admin/contracts',
-        element: <Document></Document>
+        element: <ManageContracts/>
     },
     {
         path: '/admin/documents',

@@ -1,4 +1,8 @@
-import { Tag } from "antd";
+import { Tag,Tooltip } from "antd";
+import { render } from "react-dom";
+import { DownCircleFilled } from '@ant-design/icons'
+let SERVER_SIDE = import.meta.env.VITE_REACT_API_KEY 
+
 
 export const testColumns : any[] = [
     {
@@ -13,6 +17,31 @@ export const testColumns : any[] = [
       }
 ];
 
+export const ContractsColumn : any[] = [
+    {
+        title:'Contract Name',
+        dataIndex:'contractName',
+        key:'contractName'
+      },
+      {
+        title:'Description',
+        dataIndex:'description',
+        key:'description'
+      },
+      {
+        title:'Contract file',
+        dataIndex:'contract',
+        key:'contract',
+        render: (_: any, record: any)=>{
+            return <Tooltip title={"Download file"}>
+                <DownCircleFilled style={{fontSize:'110%',color:'purple'}} onClick={()=>{
+                    window.open(`${SERVER_SIDE}/${record.contract}`)
+                }}/>
+            </Tooltip>
+        }
+      },
+
+];
 
 export const usersColumn : any[] = [
     {
