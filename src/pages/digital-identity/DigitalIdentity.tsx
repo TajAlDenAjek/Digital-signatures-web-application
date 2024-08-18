@@ -1,5 +1,5 @@
 import Icon from '@ant-design/icons/lib/components/Icon';
-import { Col, Form, Row, Select, Tag, Upload } from 'antd'
+import { Button, Col, Form, Input, Row, Select, Tag, Upload } from 'antd'
 import React, { useState } from 'react'
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -8,13 +8,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 function DigitalIdentity() {
   const [state , setState ] = useState({loading:false}) ;
   const [captchaPassed , setCaptchaPassed] = useState(0) ;
-  const [options , setOptions ] = useState()
-  const options = [
-    { value: 'gold' },
-    { value: 'lime' },
-    { value: 'green' },
-    { value: 'cyan' },
-  ];
+  const [currentEmail , setCurrentEmail ] =useState() ;
+  const [emails , setEmails ] = useState([]) ;
 
   function onChange(value:any) {
     setCaptchaPassed(1);
@@ -36,25 +31,7 @@ function DigitalIdentity() {
     }
     // };
   }
-  const tagRender = (props:any) => {
-    const { label, value, closable, onClose } = props;
-    const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
-      event.preventDefault();
-      event.stopPropagation();
-    };
-    return (
-      <Tag
-        color={value}
-        onMouseDown={onPreventMouseDown}
-        closable={closable}
-        onClose={onClose}
-        style={{ marginInlineEnd: 4 }}
-      >
-        
-        {label}
-      </Tag>
-    );
-  };
+
   return (
     <>
       <Row>
@@ -78,12 +55,7 @@ function DigitalIdentity() {
                   listType="picture-card"
                   className="avatar-uploader"
                   showUploadList={false}
-                  
-                  // style={{width}}
-                  // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                  // beforeUpload={}
                   action={`${import.meta.env.BACKEND_URL}/document`}
-                  // data={{user_id }}
                   onChange={(event:any)=>onFileChange(event, 1 )}
                   >
               <div>
@@ -116,17 +88,34 @@ function DigitalIdentity() {
               
             </Col>
           </Row>
-          <Select
-            mode="multiple"
-            tagRender={tagRender}
-            defaultValue={['gold', 'cyan']}
-            style={{ width: '100%' }}
-            options={options}
+
+          <Input onChange={(e)=>{setCurrentEmail(e.target.value)} } 
+                 value={currentEmail}
+                 onPressEnter={()=>{
+                  setEmails([...emails , currentEmail])
+
+                 }}
           />
+          {
+            emails?.map((email)=>{
+                return <>
+                <div>
+                  <Tag >
+                    {email }
+                  </Tag>
+
+                </div>
+                </>
+            })
+          }
+
+
           <ReCAPTCHA
             sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
             onChange={onChange}
           />
+
+
 
           
       </Form>

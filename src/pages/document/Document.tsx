@@ -26,10 +26,9 @@ const Document = () => {
         <CrudTable
             columns={documentColumns}
             dataSource={documents}
-            endpoint="/api/document"
             route={"/document"}
             actions={actions}
-            defaultActions={true}
+            defaultActions={['view','edit','delete']}
         />
     </>
 }
