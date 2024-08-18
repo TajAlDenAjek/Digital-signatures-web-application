@@ -94,3 +94,25 @@ export const documentColumns : any[]= [
         key:'counter'
     },
 ];
+
+export const myDocumentsColumn = [
+    {
+        title:'Document Name',
+        dataIndex:'documentName',
+        key:'documentName'
+    },
+    {
+        title:'Document Status',
+        dataIndex:'documentStatus',
+        key:'documentStatus'
+    },
+    {
+        title:'Counter',
+        dataIndex:'counter',
+        key:'counter'
+    },
+    {
+        title:'Signed',
+        render : item  => String(item?.VariousParties.isSigned)
+    }
+]

@@ -4,10 +4,13 @@ import { documentColumns } from "../../constants/columns.tsx";
 import { fakeDocumentDataSource } from "../../constants/fake";
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "antd";
-import { useGetDocumentsQuery } from "../../features/documents/documentsApiSlice";
+import { useGetDocumentsQuery, useGetMyDocumentsQuery } from "../../features/documents/documentsApiSlice";
+import { selectCurrentPermission } from "../../features/auth/authSlice";
+import { useSelector } from "react-redux";
 const Document = () => {
     const navigate = useNavigate();
-    const {data: documents , isLoading } = useGetDocumentsQuery({}) ;
+
+    const {data: documents  } = useGetDocumentsQuery({}) ;
 
     const actions: any[] = [
         {
@@ -20,7 +23,6 @@ const Document = () => {
             }
         }
     ]
-    console.log('documents',documents) 
 
     return <>
         <CrudTable

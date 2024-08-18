@@ -11,6 +11,8 @@ import Stripe from "../../pages/payment/Stripe";
 import Payment from "../../pages/payment/Payment";
 import Fingerprint from "../../pages/fingerprint/Fingerprint";
 import GovermentOfficiers from "../../pages/goverment-officiers/GovermentOfficiers";
+import MyDocuments from "../../pages/document/MyDocuments";
+import SingleDocument from "../../pages/document/SingleDocument";
 import ManageUsers from "../../pages/AdminPages/ManageUsers";
 import ManageAdmins from "../../pages/AdminPages/ManageAdmins";
 export const adminRoutes: RouteObject[] = [
@@ -84,12 +86,12 @@ export const userRoutes: RouteObject[] = [
         element: <Profile></Profile>
     },
     {
-        path: '/document',
-        element: <Document></Document>
+        path:'/document',
+        element:<MyDocuments></MyDocuments>
     },
     {
-        path: '/document/:id',
-        element: <h1>not implemented - T1 </h1>
+        path:'/document/:id',
+        element:<SingleDocument></SingleDocument>
     },
     {
         path: '/document/:id/edit',
