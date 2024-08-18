@@ -23,8 +23,8 @@ const Home = () => {
       <CrudTable
         columns={testColumns}
         dataSource={fakeTableDataSource}
-        endpoint={'/api/product'}
         route={'/product'}
+        defaultActions={['view','edit','delete']}
       ></CrudTable>
     </div>
   )

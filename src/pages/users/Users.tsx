@@ -11,9 +11,9 @@ function Users({type}:params ) {
   return (
     <CrudTable
         columns={usersColumn}
-        dataSource={data?.data}
-        endpoint="/api/users"
+        dataSource={fakeUsersDataSource}
         route="/users"
+        defaultActions={['view','edit','delete']}
     />
   )
 }
