@@ -14,12 +14,46 @@ export const documentsApiSlice = apiSlice.injectEndpoints({
                 return baseQueryReturnValue?.data ;
             },
         }),
+        getMyDocuments: builder.query({
+            query: ()=>({
+                url:'/user/getUserDocuments',
+                method:'GET'
+            }),
+            transformResponse(baseQueryReturnValue, meta, arg) {
+                return baseQueryReturnValue?.data ;
+            },
+        }),
+        uploadUserData: builder.mutation({
+            query:(values)=>{
+                const data = new FormData() ;
+                data.append('image_backSide', values?.back?.file?.originFileObj);
+                data.append('image_frontSide' , values?.front?.file?.originFileObj) ;
+                data.append('nationalNumber' , values?.nationalNumber) ;
+                data.append('fullName' , values?.fullName) ;
+                console.log(data);
+                return {
+                    url:'/C_Orders/uploadUserData',
+                    method:'POST',
+                    body:data,
+                    formData:true 
+                }
+            }
+        }),
+        getDocumentById: builder.query({
+            query:()=>({
+                url:'document',
+                method:'GET',
+            })
+        })
         
     })
 })
 
 
 export const {
-    useGetDocumentsQuery
+    useGetDocumentsQuery,
+    useGetMyDocumentsQuery,
+    useUploadUserDataMutation,
+    useGetDocumentByIdQuery
 
 } = documentsApiSlice

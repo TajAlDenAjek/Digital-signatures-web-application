@@ -11,6 +11,8 @@ import Stripe from "../../pages/payment/Stripe";
 import Payment from "../../pages/payment/Payment";
 import Fingerprint from "../../pages/fingerprint/Fingerprint";
 import GovermentOfficiers from "../../pages/goverment-officiers/GovermentOfficiers";
+import MyDocuments from "../../pages/document/MyDocuments";
+import SingleDocument from "../../pages/document/SingleDocument";
 
 export const adminRoutes:RouteObject[] = [
     {
@@ -97,11 +99,11 @@ export const userRoutes:RouteObject[] = [
     },
     {
         path:'/document',
-        element:<Document></Document>
+        element:<MyDocuments></MyDocuments>
     },
     {
         path:'/document/:id',
-        element:<h1>not implemented - T1 </h1>
+        element:<SingleDocument></SingleDocument>
     },
     {
         path:'/document/:id/edit',

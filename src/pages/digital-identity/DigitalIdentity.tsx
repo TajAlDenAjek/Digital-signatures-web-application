@@ -1,5 +1,5 @@
 import Icon from '@ant-design/icons/lib/components/Icon';
-import { Button, Col, Form, Input, Row, Select, Tag, Upload } from 'antd'
+import { Button, Col, Form, Input, Row, Select, Tag, Upload, message } from 'antd'
 import React, { useState } from 'react'
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -88,26 +88,6 @@ function DigitalIdentity() {
               
             </Col>
           </Row>
-
-          <Input onChange={(e)=>{setCurrentEmail(e.target.value)} } 
-                 value={currentEmail}
-                 onPressEnter={()=>{
-                  setEmails([...emails , currentEmail])
-
-                 }}
-          />
-          {
-            emails?.map((email)=>{
-                return <>
-                <div>
-                  <Tag >
-                    {email }
-                  </Tag>
-
-                </div>
-                </>
-            })
-          }
 
 
           <ReCAPTCHA

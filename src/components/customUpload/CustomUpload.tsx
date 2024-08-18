@@ -23,7 +23,7 @@ const beforeUpload = (file: FileType) => {
 };
 type Parms = {
 }
-function CustomUpload() {
+function CustomUpload({name}) {
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState<string>();
     
@@ -43,9 +43,8 @@ function CustomUpload() {
 
   return (
     <Form.Item
-        name="file"
-        label="Upload"
-        rules={[{required:true}]}
+        name={name}
+        rules={[{required:true , message:`Please upload your ${name} ID image`}]}
         >
         <Upload
             listType="picture-card"
@@ -54,9 +53,10 @@ function CustomUpload() {
             customRequest={(info:any)=>{console.log(info)}}
             beforeUpload={beforeUpload}
             onChange={handleChange}
+            
         >
             
-            <>Click to Upload</>
+            <>{name}</>
         </Upload>
         </Form.Item>
   )
