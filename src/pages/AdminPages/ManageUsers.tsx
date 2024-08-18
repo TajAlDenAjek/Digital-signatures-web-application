@@ -5,6 +5,7 @@ import { useGetUsersQuery } from '../../features/users/usersApiSlice'
 import type { TableProps } from 'antd';
 import { Space, Table, Tag } from 'antd';
 import { Spin, Empty } from 'antd'
+
 const ManageUsers = () => {
     const {
         data,
@@ -23,7 +24,9 @@ const ManageUsers = () => {
         content = <>{error}</>
     }
     return (
-        { content }
+        <>
+            {content}
+        </>
     )
 }
 

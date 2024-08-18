@@ -3,7 +3,7 @@ import { Space, Table, Tag, Typography, Tooltip ,Modal} from 'antd';
 import { DeleteOutlined, EditOutlined, FolderViewOutlined, FundViewOutlined, EyeOutlined } from "@ant-design/icons";
 
 import type { TableProps } from 'antd';
-import './style.scss'
+import './styles.scss'
 
 interface AdminTableProps {
     tableTitle?: String

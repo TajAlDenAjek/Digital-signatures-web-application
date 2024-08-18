@@ -11,6 +11,7 @@ import {
      SignatureOutlined,
      SecurityScanOutlined,
      GroupOutlined,
+     HomeOutlined,
      SafetyCertificateOutlined
      
 } from '@ant-design/icons';
@@ -25,29 +26,42 @@ interface SideBarPage {
 
 export const adminPages: SideBarPage[] = [
     {
-        key: '1',
-        icon: React.createElement(PaperClipOutlined),
-        label: `Manage Documents`,
-        url: '/admin/document'
-    },
-    {
-        key: '2',
+        key: 'Admin Manage Users',
         icon: React.createElement(UserAddOutlined),
         label: `Manage Users`,
         url: '/admin/users'
     },
     {
-        key: '3',
-        icon: React.createElement(GroupOutlined),
+        key: 'Admin Manage Goverment Officiers',
+        icon: React.createElement(TeamOutlined),
         label: `Manage Goverment Officiers`,
         url: '/admin/goverment-officiers'
     },
     {
-        key: '4',
+        key: 'Admin Manage Contracts',
+        icon: React.createElement(GroupOutlined),
+        label: `Manage Contracts`,
+        url: '/admin/contracts'
+    },
+    {
+        key: 'Admin Manage Documents',
+        icon: React.createElement(PaperClipOutlined),
+        label: `Manage Documents`,
+        url: '/admin/documents'
+    },
+    {
+        key: 'Admin Manage Digital Certifcates Requests',
         icon: React.createElement(SafetyCertificateOutlined),
-        label: `Manage Certifcate Requests`,
-        url: '/admin/certifcate-requests'
-    }
+        label: `Manage Digital Certifcates Requests`,
+        url: '/admin/digital-certifcates-requests'
+    },
+    {
+        key: 'Admin Manage Portals',
+        icon: React.createElement(HomeOutlined),
+        label: `Manage Portals`,
+        url: '/admin/portals'
+    },
+
 ]
 
 export const governmentOfficerPages: SideBarPage[] = [
