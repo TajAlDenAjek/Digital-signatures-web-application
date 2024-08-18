@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Space, Table, Tag, Typography, Tooltip ,Modal} from 'antd';
+import { Space, Table, Tag, Typography, Tooltip, Modal } from 'antd';
 import { DeleteOutlined, EditOutlined, FolderViewOutlined, FundViewOutlined, EyeOutlined } from "@ant-design/icons";
 
 import type { TableProps } from 'antd';
@@ -20,9 +20,13 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
     actions = ['view', 'edit', 'delete'],
     handleDelete,
     handleEdit,
-    customActions,ModalContent=<></>
+    customActions, 
+    ModalContent
 }) => {
     const [currentData, setCurrentData] = useState<any>()
+    // const customModalContnet=(currentData:any,mode:any)=>{
+    //     return <ModalContent currentData={currentData} mode={mode} />
+    // }
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [mode, setMode] = useState<string>('View')
     const actionsColumn = {
@@ -86,7 +90,8 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
                         </>
                     }
                 >
-                    {<ModalContent currentData={currentData} mode={mode}/>}
+                    {/* {ModalContent && customModalContnet(currentData,mode)} */}
+                    {ModalContent && <ModalContent currentData={currentData} mode={mode} />}
                 </Modal>
             </div>
         </>
