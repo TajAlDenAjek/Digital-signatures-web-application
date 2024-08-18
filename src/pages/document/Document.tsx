@@ -1,6 +1,6 @@
 import { PayCircleOutlined } from "@ant-design/icons";
 import CrudTable from "../../components/CrudTable";
-import { documentColumns } from "../../constants/columns";
+import { documentColumns } from "../../constants/columns.tsx";
 import { fakeDocumentDataSource } from "../../constants/fake";
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "antd";

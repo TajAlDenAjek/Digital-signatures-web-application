@@ -1,6 +1,6 @@
 import React from 'react'
 import CrudTable from '../../components/CrudTable'
-import { usersColumn } from '../../constants/columns'
+import { usersColumn } from '../../constants/columns.tsx'
 import { useGetUsersQuery } from '../../features/users/usersApiSlice'
 import { fakeUsersDataSource } from '../../constants/fake'
 type params = {

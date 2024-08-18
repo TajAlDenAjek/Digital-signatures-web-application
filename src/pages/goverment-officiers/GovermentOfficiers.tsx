@@ -1,6 +1,6 @@
 import React from 'react'
 import CrudTable from '../../components/CrudTable'
-import { adminsColumns } from '../../constants/columns'
+import { adminsColumns } from '../../constants/columns.tsx'
 import { fakeAdminsDataSource } from '../../constants/fake'
 import { useGetAllAdminsQuery } from '../../features/goverment-official/govermentOfficialsApiSlice'
 

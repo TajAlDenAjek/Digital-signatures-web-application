@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminTable from '../../components/CustomAdminTable/AdminTable'
-import { usersColumn } from '../../constants/columns'
+import { usersColumn } from '../../constants/columns.tsx'
 import { useGetUsersQuery } from '../../features/users/usersApiSlice'
 import type { TableProps } from 'antd';
 import { Space, Table, Tag } from 'antd';

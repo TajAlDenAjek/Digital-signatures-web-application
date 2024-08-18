@@ -1,3 +1,5 @@
+import { Tag } from "antd";
+
 export const testColumns : any[] = [
     {
         title:'name',
@@ -45,7 +47,10 @@ export const adminsColumns : any[] = [
     {
         title:'Role',
         dataIndex:'role',
-        key:'role'
+        key:'role',
+        render: (_: any, record: any)=>{
+            return <Tag color={record?.role==='admin' ? 'orange' : 'green'}>{record?.role==='admin' ? 'Admin' : 'Government Official'}</Tag>
+        }
     },
     {
         title:'Email',
