@@ -20,7 +20,7 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
     actions = ['view', 'edit', 'delete'],
     handleDelete,
     handleEdit,
-    customActions,ModalContent
+    customActions,ModalContent=<></>
 }) => {
     const [currentData, setCurrentData] = useState<any>()
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)

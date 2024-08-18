@@ -26,37 +26,37 @@ interface SideBarPage {
 
 export const adminPages: SideBarPage[] = [
     {
-        key: 'Admin Manage Users',
+        key: '1',
         icon: React.createElement(UserAddOutlined),
         label: `Manage Users`,
         url: '/admin/users'
     },
     {
-        key: 'Admin Manage Goverment Officiers',
+        key: '2',
         icon: React.createElement(TeamOutlined),
         label: `Manage Goverment Officiers`,
         url: '/admin/goverment-officiers'
     },
     {
-        key: 'Admin Manage Contracts',
+        key: '3',
         icon: React.createElement(GroupOutlined),
         label: `Manage Contracts`,
         url: '/admin/contracts'
     },
     {
-        key: 'Admin Manage Documents',
+        key: '4',
         icon: React.createElement(PaperClipOutlined),
         label: `Manage Documents`,
         url: '/admin/documents'
     },
     {
-        key: 'Admin Manage Digital Certifcates Requests',
+        key: '5',
         icon: React.createElement(SafetyCertificateOutlined),
         label: `Manage Digital Certifcates Requests`,
         url: '/admin/digital-certifcates-requests'
     },
     {
-        key: 'Admin Manage Portals',
+        key: '6',
         icon: React.createElement(HomeOutlined),
         label: `Manage Portals`,
         url: '/admin/portals'

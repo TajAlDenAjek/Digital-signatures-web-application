@@ -465,7 +465,10 @@ const NotFound404Page = () => {
                         <div className="numbers__item numbers__item_3">4</div>
                     </div>
                 </div>
-                <button className="button-89" role="button" onClick={()=>{navigate('/')}}>Go Home</button>
+                <button className="button-89" role="button" onClick={()=>{
+                    console.log('here')
+                    navigate('/')
+                    }}>Go Home</button>
             </div>
         </div>
 

@@ -38,6 +38,10 @@ export const adminRoutes: RouteObject[] = [
         path: '/admin/portals',
         element: <Document></Document>
     },
+    {
+        path: '/',
+        element: <Home />
+    },
 ];
 
 

@@ -14,18 +14,13 @@ const Home = () => {
   console.log(permission,'permmision')
   const navigateTo = permission === 'admin' ? adminRoutes[0]?.path : permission === "governmentOfficial" ? governmentOfficerRoutes[0]?.path : userRoutes[0]?.path
   useEffect(() => {
+    console.log(navigateTo)
     navigate(String(navigateTo))
   }, [])
 
   return (
     <div>
-      {/* <h1>redirecting...</h1> */}
-      <CrudTable
-        columns={testColumns}
-        dataSource={fakeTableDataSource}
-        route={'/product'}
-        defaultActions={['view','edit','delete']}
-      ></CrudTable>
+      <h1>redirecting...</h1>
     </div>
   )
 }
