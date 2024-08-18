@@ -29,7 +29,15 @@ export const usersColumn : any[] = [
         title:'Email',
         dataIndex:'email',
         key:'email'
-    }
+    },
+    {
+        title:'Status',
+        dataIndex:'blocked',
+        key:'blocked',
+        render: (_: any, record: any)=>{
+            return <Tag color={record?.blocked ? 'red' : 'green'}>{record?.blocked ? 'Blocked' : 'UnBlocked'}</Tag>
+        }
+    },
 ];
 
 

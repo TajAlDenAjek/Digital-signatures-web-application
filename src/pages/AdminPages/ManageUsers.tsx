@@ -1,14 +1,16 @@
 import React from 'react'
 import AdminTable from '../../components/CustomAdminTable/AdminTable'
 import { usersColumn } from '../../constants/columns.tsx'
-import { useGetUsersQuery, useDeleteUserMutation } from '../../features/users/usersApiSlice'
+import { useGetUsersQuery, useDeleteUserMutation,useBlockUserMutation } from '../../features/users/usersApiSlice'
+import { XFilled, CloseCircleFilled ,PlayCircleFilled} from '@ant-design/icons'
 import type { TableProps } from 'antd';
 import { Space, Table, Tag } from 'antd';
 import { Spin, Empty, Button } from 'antd'
 import {
     Form, message,
     Typography,
-    Input
+    Input,
+    Tooltip,
 
 } from 'antd'
 const CustomComponent = ({
@@ -82,11 +84,24 @@ const CustomComponent = ({
 
 const ManageUsers = () => {
     const [deleteUser, { }] = useDeleteUserMutation()
-
+    const [blockUser,{}]=useBlockUserMutation()
     const handleDelete = async (id: any) => {
         try {
             await deleteUser(id).unwrap()
             message.success('User Deleted Successful')
+        } catch (error: any) {
+            message.error('Something went wrong')
+        }
+    }
+    const handleBlockRecord = async (record: any) => {
+        try {
+            await blockUser({
+                id:record?.id,
+                data:{
+                    blocked:!record?.blocked
+                }
+            }).unwrap()
+            message.success('User status updated Successfuly')
         } catch (error: any) {
             message.error('Something went wrong')
         }
@@ -99,22 +114,29 @@ const ManageUsers = () => {
         isError,
         error
     } = useGetUsersQuery({})
-    const handleUpdate = () => {
-        console.log('update')
+
+    const customActions = (record: any) => {
+        return (
+            <>
+                <Tooltip title={`${!record?.blocked ? 'Block' : 'Unblock'} User`}>
+                    {
+                        !record?.blocked ?
+                            <CloseCircleFilled style={{ fontSize: '110%', color: 'red' }} onClick={() => { handleBlockRecord(record) }} />
+                            :
+                            <PlayCircleFilled style={{ fontSize: '110%', color: 'green' }} onClick={() => { handleBlockRecord(record) }}/>
+                        
+                    }
+
+                </Tooltip >
+            </>
+        )
     }
-    // const customActions = (record: any) => {
-    //     return (
-    //         <>
-    //             <h1>{record?.id}</h1>
-    //         </>
-    //     )
-    // }
 
     let content = <Empty />
     if (isLoading) {
         content = <AdminTable columns={usersColumn} data={currentData?.data} isLoading={isLoading} tableTitle={"User"} />
     } else if (isSuccess) {
-        content = <AdminTable columns={usersColumn} data={currentData?.data} tableTitle={"User"} ModalContent={CustomComponent} actions={['view', 'delete']} isUpdating={true} handleDelete={handleDelete} />
+        content = <AdminTable customActions={customActions} columns={usersColumn} data={currentData?.data} tableTitle={"User"} ModalContent={CustomComponent} actions={['view', 'delete']} isUpdating={true} handleDelete={handleDelete} />
     } else if (isError) {
         content = <>{error}</>
     }

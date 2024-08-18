@@ -28,12 +28,24 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             },
             invalidatesTags: ['Users']
         }),
+        blockUser: builder.mutation({
+            query: data => {
+                return {
+                    url: `/admin/blockUser/${data?.id}`,
+                    method: 'PUT',
+                    body: data?.data,
+                    formData: true,
+                };
+            },
+            invalidatesTags: ['Users']
+        }),
     })
 })
 
 
 export const {
     useGetUsersQuery,
-    useDeleteUserMutation
+    useDeleteUserMutation,
+    useBlockUserMutation
 
 } = usersApiSlice
