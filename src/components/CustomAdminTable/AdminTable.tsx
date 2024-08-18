@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Space, Table, Tag, Typography, Tooltip, Modal } from 'antd';
+import { Space, Table, Tag, Typography,Popconfirm, Tooltip, Modal } from 'antd';
 import { DeleteOutlined, EditOutlined, FolderViewOutlined, FundViewOutlined, EyeOutlined } from "@ant-design/icons";
 
 import type { TableProps } from 'antd';
@@ -55,12 +55,18 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
                 }
                 {
                     actions.includes('delete') &&
-                    <Tooltip title='Delete record'>
-                        <DeleteOutlined style={{ fontSize: '110%', color: 'red' }} onClick={() => {
-                            // setMode('delete')
-                            handleDelete(record.id);
-                        }} />
-                    </Tooltip>
+                    <Popconfirm
+                        title="Delete"
+                        description="Are you sure to delete this record?"
+                        okText="Yes"
+                        cancelText="No"
+                        onConfirm={() => handleDelete(record.id)}
+                    >
+                        <Tooltip title='Delete Record'>
+                            <DeleteOutlined style={{ fontSize: '110%', color: 'red' }} />
+                        </Tooltip>
+                    </Popconfirm >
+   
                 }
                 {customActions && customActions(record)}
             </Space >

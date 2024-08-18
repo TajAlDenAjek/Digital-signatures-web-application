@@ -1,7 +1,7 @@
 import React from 'react'
 import AdminTable from '../../components/CustomAdminTable/AdminTable'
 import { usersColumn } from '../../constants/columns.tsx'
-import { useGetUsersQuery } from '../../features/users/usersApiSlice'
+import { useGetUsersQuery, useDeleteUserMutation } from '../../features/users/usersApiSlice'
 import type { TableProps } from 'antd';
 import { Space, Table, Tag } from 'antd';
 import { Spin, Empty, Button } from 'antd'
@@ -18,6 +18,7 @@ const CustomComponent = ({
     isUpdating
 }: any) => {
     const [form] = Form.useForm();
+
     const onFinish = async (values: any) => {
         try {
             const data = await handleUpdate({
@@ -80,6 +81,16 @@ const CustomComponent = ({
 }
 
 const ManageUsers = () => {
+    const [deleteUser, { }] = useDeleteUserMutation()
+
+    const handleDelete = async (id: any) => {
+        try {
+            await deleteUser(id).unwrap()
+            message.success('User Deleted Successful')
+        } catch (error: any) {
+            message.error('Something went wrong')
+        }
+    }
     const {
         data,
         currentData,
@@ -103,7 +114,7 @@ const ManageUsers = () => {
     if (isLoading) {
         content = <AdminTable columns={usersColumn} data={currentData?.data} isLoading={isLoading} tableTitle={"User"} />
     } else if (isSuccess) {
-        content = <AdminTable columns={usersColumn} data={currentData?.data} tableTitle={"User"} ModalContent={CustomComponent} actions={['view']} isUpdating={true} />
+        content = <AdminTable columns={usersColumn} data={currentData?.data} tableTitle={"User"} ModalContent={CustomComponent} actions={['view', 'delete']} isUpdating={true} handleDelete={handleDelete} />
     } else if (isError) {
         content = <>{error}</>
     }
