@@ -11,6 +11,7 @@ import {
      SignatureOutlined,
      SecurityScanOutlined,
      GroupOutlined,
+     SafetyCertificateOutlined
      
 } from '@ant-design/icons';
 import React, { Children } from 'react'
@@ -40,6 +41,12 @@ export const adminPages: SideBarPage[] = [
         icon: React.createElement(GroupOutlined),
         label: `Manage Goverment Officiers`,
         url: '/admin/goverment-officiers'
+    },
+    {
+        key: '4',
+        icon: React.createElement(SafetyCertificateOutlined),
+        label: `Manage Certifcate Requests`,
+        url: '/admin/certifcate-requests'
     }
 ]
 
