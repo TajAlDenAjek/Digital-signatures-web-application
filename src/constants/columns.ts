@@ -19,17 +19,7 @@ export const usersColumn : any[] = [
         key:'firstName'
     },
     {
-        title:'Middle Name',
-        dataIndex:'middleName',
-        key:'middleName'
-    },
-    {
         title:'Last Name',
-        dataIndex:'lastName',
-        key:'lastName'
-    },
-    {
-        title:'organization',
         dataIndex:'lastName',
         key:'lastName'
     },

@@ -1,4 +1,8 @@
 .crud-table {
+    .modal-content-container{
+        display: flex;
+        flex-direction: column;
+    }
     .ant-table-cell{
         text-align: center;
         font-weight: bolder;

@@ -65,11 +65,11 @@ const RegisterationForm = () => {
                 >
                     <Input type='text' />
                 </Form.Item>
-                <Form.Item<RegisterFieldType> name="organization" label="Organization"
+                {/* <Form.Item<RegisterFieldType> name="organization" label="Organization"
                     rules={[{ required: true, message: 'Please Enter your organization' }]}
                 >
                     <Input type='text' />
-                </Form.Item>
+                </Form.Item> */}
                 <Form.Item<RegisterFieldType> name="email" label="Email"
                     rules={[{ required: true, message: 'Please Enter your email' }]}
                 >

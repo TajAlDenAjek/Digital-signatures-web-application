@@ -19,14 +19,12 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
     isLoading = false,
     actions = ['view', 'edit', 'delete'],
     handleDelete,
-    handleEdit,
-    customActions, 
-    ModalContent
+    handleUpdate,
+    customActions,
+    ModalContent,
+    isUpdating
 }) => {
     const [currentData, setCurrentData] = useState<any>()
-    // const customModalContnet=(currentData:any,mode:any)=>{
-    //     return <ModalContent currentData={currentData} mode={mode} />
-    // }
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [mode, setMode] = useState<string>('View')
     const actionsColumn = {
@@ -37,7 +35,7 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
                 {
                     actions.includes('view') &&
                     <Tooltip title='View Record'>
-                        <EyeOutlined style={{ fontSize: '110%' ,color:'blue'}} onClick={() => {
+                        <EyeOutlined style={{ fontSize: '110%', color: 'blue' }} onClick={() => {
                             setCurrentData(record)
                             setIsModalOpen(true)
                             setMode('View')
@@ -68,6 +66,7 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
             </Space >
         ),
     }
+    
     return (
         <>
             <div className="crud-table">
@@ -90,8 +89,9 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
                         </>
                     }
                 >
-                    {/* {ModalContent && customModalContnet(currentData,mode)} */}
-                    {ModalContent && <ModalContent currentData={currentData} mode={mode} />}
+                    <div className='modal-content-container'>
+                        {ModalContent && <ModalContent currentData={currentData} mode={mode} handleUpdate={handleUpdate} isUpdating={isUpdating} />}
+                    </div>
                 </Modal>
             </div>
         </>
