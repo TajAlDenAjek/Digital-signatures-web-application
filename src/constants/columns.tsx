@@ -18,22 +18,26 @@ export const usersColumn : any[] = [
     {
         title:'First Name',
         dataIndex:'firstName',
-        key:'firstName'
+        key:'firstName',
+        filterSearch: true,
     },
     {
         title:'Last Name',
         dataIndex:'lastName',
-        key:'lastName'
+        key:'lastName',
+        filterSearch: true,
     },
     {
         title:'Email',
         dataIndex:'email',
-        key:'email'
+        key:'email',
+        filterSearch: true,
     },
     {
         title:'Status',
         dataIndex:'blocked',
         key:'blocked',
+        filterSearch: true,
         render: (_: any, record: any)=>{
             return <Tag color={record?.blocked ? 'red' : 'green'}>{record?.blocked ? 'Blocked' : 'UnBlocked'}</Tag>
         }
@@ -45,17 +49,21 @@ export const adminsColumns : any[] = [
     {
         title:'First Name',
         dataIndex:'firstName',
-        key:'firstName'
+        key:'firstName',
+        filterSearch: true,
     },
     {
         title:'Last Name',
         dataIndex:'lastName',
-        key:'lastName'
+        key:'lastName',
+        filterSearch: true,
+        
     },
     {
         title:'Role',
         dataIndex:'role',
         key:'role',
+        filterSearch: true,
         render: (_: any, record: any)=>{
             return <Tag color={record?.role==='admin' ? 'orange' : 'green'}>{record?.role==='admin' ? 'Admin' : 'Government Official'}</Tag>
         }
@@ -63,7 +71,8 @@ export const adminsColumns : any[] = [
     {
         title:'Email',
         dataIndex:'email',
-        key:'email'
+        key:'email',
+        filterSearch: true,
     }
 ];
 

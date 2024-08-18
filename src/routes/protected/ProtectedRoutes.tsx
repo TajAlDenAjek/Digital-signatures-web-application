@@ -12,15 +12,15 @@ import Payment from "../../pages/payment/Payment";
 import Fingerprint from "../../pages/fingerprint/Fingerprint";
 import GovermentOfficiers from "../../pages/goverment-officiers/GovermentOfficiers";
 import ManageUsers from "../../pages/AdminPages/ManageUsers";
-
+import ManageAdmins from "../../pages/AdminPages/ManageAdmins";
 export const adminRoutes: RouteObject[] = [
     {
         path: '/admin/users',
         element: <ManageUsers />
     },
     {
-        path: '/admin/goverment-officiers',
-        element: <GovermentOfficiers />
+        path: '/admin/admins',
+        element: <ManageAdmins />
     },
     {
         path: '/admin/contracts',

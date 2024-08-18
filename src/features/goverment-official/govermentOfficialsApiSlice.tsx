@@ -11,6 +11,7 @@ export const govermentOfficialsApiSlice = apiSlice.injectEndpoints({
                 method:'GET'
             })
         }),
+        providesTags: ['Admins']
     })
 })
 

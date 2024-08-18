@@ -34,8 +34,8 @@ export const adminPages: SideBarPage[] = [
     {
         key: '2',
         icon: React.createElement(TeamOutlined),
-        label: `Manage Goverment Officiers`,
-        url: '/admin/goverment-officiers'
+        label: `Manage Admins`,
+        url: '/admin/admins'
     },
     {
         key: '3',
