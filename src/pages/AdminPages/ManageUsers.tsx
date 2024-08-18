@@ -42,28 +42,28 @@ const CustomComponent = ({
                 onKeyDown={(e) => e.key == "Enter" ? e.preventDefault() : ''}
 
             >
-                <Form.Item label='First Name' name={'firstName'} rules={[{ required: mode=='Edit' }]}>
+                <Form.Item label='First Name' name={'firstName'} rules={[{ required: mode == 'Edit' }]}>
                     {
                         mode === 'Edit' ?
                             <Input type='text' />
                             : <Typography.Text>{currentData.firstName}</Typography.Text>
                     }
                 </Form.Item>
-                <Form.Item label='Middle Name' name={'middleName'} rules={[{ required: mode=='Edit' }]}>
+                <Form.Item label='Middle Name' name={'middleName'} rules={[{ required: mode == 'Edit' }]}>
                     {
                         mode === 'Edit' ?
                             <Input type='text' />
                             : <Typography.Text>{currentData.middleName}</Typography.Text>
                     }
                 </Form.Item>
-                <Form.Item label='Last Name' name={'lastName'} rules={[{ required: mode=='Edit' }]}>
+                <Form.Item label='Last Name' name={'lastName'} rules={[{ required: mode == 'Edit' }]}>
                     {
                         mode === 'Edit' ?
                             <Input type='text' />
                             : <Typography.Text>{currentData.lastName}</Typography.Text>
                     }
                 </Form.Item>
-                <Form.Item label='Email' name={'email'} rules={[{ required: mode=='Edit' }]}>
+                <Form.Item label='Email' name={'email'} rules={[{ required: mode == 'Edit' }]}>
                     {
                         mode === 'Edit' ?
                             <Input type='text' />
@@ -88,9 +88,17 @@ const ManageUsers = () => {
         isError,
         error
     } = useGetUsersQuery({})
-    const handleUpdate=()=>{
+    const handleUpdate = () => {
         console.log('update')
     }
+    // const customActions = (record: any) => {
+    //     return (
+    //         <>
+    //             <h1>{record?.id}</h1>
+    //         </>
+    //     )
+    // }
+
     let content = <Empty />
     if (isLoading) {
         content = <AdminTable columns={usersColumn} data={currentData?.data} isLoading={isLoading} tableTitle={"User"} />
