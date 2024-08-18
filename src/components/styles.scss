@@ -1,4 +1,15 @@
 .crud-table {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;;
+    // width: 100%;
+    // height: 100%;
+    overflow: auto;
+    h2{
+        font-size: larger;
+        font-weight: bolder;
+    }
     .ant-table-cell{
         text-align: center;
         font-weight: bolder;

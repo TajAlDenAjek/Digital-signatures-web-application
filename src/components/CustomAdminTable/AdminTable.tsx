@@ -37,7 +37,7 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
                 {
                     actions.includes('view') &&
                     <Tooltip title='View Record'>
-                        <EyeOutlined style={{ fontSize: '150%' }} onClick={() => {
+                        <EyeOutlined style={{ fontSize: '110%' ,color:'blue'}} onClick={() => {
                             setCurrentData(record)
                             setIsModalOpen(true)
                             setMode('View')
@@ -47,7 +47,7 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
                 {
                     actions.includes('edit') &&
                     <Tooltip title='Edit Record' >
-                        <EditOutlined style={{ fontSize: '150%', color: 'green' }} onClick={() => {
+                        <EditOutlined style={{ fontSize: '110%', color: 'green' }} onClick={() => {
                             setCurrentData(record)
                             setIsModalOpen(true)
                             setMode('Edit')
@@ -58,7 +58,7 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
                 {
                     actions.includes('delete') &&
                     <Tooltip title='Delete record'>
-                        <DeleteOutlined style={{ fontSize: '150%', color: 'red' }} onClick={() => {
+                        <DeleteOutlined style={{ fontSize: '110%', color: 'red' }} onClick={() => {
                             // setMode('delete')
                             handleDelete(record.id);
                         }} />
@@ -70,8 +70,8 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
     }
     return (
         <>
-            <div className="table-container">
-                <h3>{`${tableTitle}s Table`}</h3>
+            <div className="crud-table">
+                <h2>{`${tableTitle}s Table`}</h2>
                 <Table columns={[...columns, actionsColumn]} dataSource={data} loading={isLoading} />
                 <Modal
                     width={600}
