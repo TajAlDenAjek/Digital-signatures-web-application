@@ -36,7 +36,22 @@
         }
 
     }
+    .ant-table-content{
 
+        font-size: medium !important;
+    }
+    .ant-table-thead{
+        font-weight: bolder !important;
+        .ant-table-cell{
+            background-color: lightblue;
+        }
+    }
+    .ant-table-cell{
+        background-color: #ddedfc;
+    }
+    .ant-table-cell .ant-table-cell-row-hover{
+        background-color: #bad9e6;
+    }
     .table-actions {
         display: flex;
         // justify-content: ;
