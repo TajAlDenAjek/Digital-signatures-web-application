@@ -6,7 +6,7 @@ function Payment() {
     <>
         <h1 style={{marginBottom:'10px'}}> Payment </h1>
         
-        <Stripe></Stripe>
+        {/* <Stripe></Stripe> */}
     </>
   )
 }

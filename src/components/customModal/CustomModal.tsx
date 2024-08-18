@@ -1,7 +1,6 @@
 import { Modal } from 'antd'
 import React from 'react'
 
-import { showErrors } from '../functions/helpers'
 type Params = {
     action: string 
     open : any 

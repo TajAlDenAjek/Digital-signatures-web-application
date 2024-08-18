@@ -4,17 +4,20 @@ import { usersColumn } from '../../constants/columns'
 import { useGetUsersQuery } from '../../features/users/usersApiSlice'
 import { fakeUsersDataSource } from '../../constants/fake'
 type params = {
-  type: string ;
+  type: string;
 }
-function Users({type}:params ) {
-  const {data}=useGetUsersQuery({})
+function Users({ type }: params) {
+  const { data } = useGetUsersQuery({})
   return (
-    <CrudTable
+    <>
+      <CrudTable
         columns={usersColumn}
-        dataSource={fakeUsersDataSource}
+        dataSource={data?.data}
         route="/users"
-        defaultActions={['view','edit','delete']}
-    />
+        defaultActions={['view', 'edit', 'delete']}
+      />
+    </>
+
   )
 }
 
