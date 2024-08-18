@@ -11,10 +11,6 @@ import Stripe from "../../pages/payment/Stripe";
 import Payment from "../../pages/payment/Payment";
 import Fingerprint from "../../pages/fingerprint/Fingerprint";
 import GovermentOfficiers from "../../pages/goverment-officiers/GovermentOfficiers";
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/rami-dev
 export const adminRoutes:RouteObject[] = [
     {
         path:'/admin/document',
