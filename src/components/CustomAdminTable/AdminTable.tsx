@@ -24,7 +24,7 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
 }) => {
     const [currentData, setCurrentData] = useState<any>()
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
-    const [mode, setMode] = useState<string>('view')
+    const [mode, setMode] = useState<string>('View')
     const actionsColumn = {
         title: 'Action',
         key: 'action',
@@ -36,7 +36,7 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
                         <EyeOutlined style={{ fontSize: '150%' }} onClick={() => {
                             setCurrentData(record)
                             setIsModalOpen(true)
-                            setMode('view')
+                            setMode('View')
                         }} />
                     </Tooltip>
                 }
@@ -46,7 +46,7 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
                         <EditOutlined style={{ fontSize: '150%', color: 'green' }} onClick={() => {
                             setCurrentData(record)
                             setIsModalOpen(true)
-                            setMode('edit')
+                            setMode('Edit')
                             // handleEdit()
                         }} />
                     </Tooltip>
@@ -67,11 +67,11 @@ const AdminTable: React.FC<AdminTableProps | any> = ({
     return (
         <>
             <div className="table-container">
-                <h3>{tableTitle}</h3>
+                <h3>{`${tableTitle}s Table`}</h3>
                 <Table columns={[...columns, actionsColumn]} dataSource={data} loading={isLoading} />
                 <Modal
                     width={600}
-                    title={mode+' '+tableTitle}
+                    title={`${mode} ${tableTitle}`}
                     open={isModalOpen}
                     destroyOnClose
                     closable={true}
