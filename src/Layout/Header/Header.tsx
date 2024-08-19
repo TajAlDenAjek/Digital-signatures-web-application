@@ -2,7 +2,7 @@ import { Layout, theme, Tooltip } from 'antd'
 import { LogoutOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentPermission } from '../../features/auth/authSlice';
-import { selectCurrentUserName } from '../../features/auth/authSlice';
+import { selectCurrentUserName,selectUserEmaali } from '../../features/auth/authSlice';
 import { Permissions } from '../../features/auth/authSlice';
 import { logOut } from '../../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +11,7 @@ const Header = () => {
     const dispatch = useDispatch();
     const navigate=useNavigate()
     const permission: Permissions | null = useSelector(selectCurrentPermission)
-    const username = useSelector(selectCurrentUserName)
+    const username = useSelector(selectUserEmaali)
     const title: string = permission === 'admin' ? 'Admin Panel' : permission === "governmentOfficial" ? `${'government dashboard'}` : `${username} user`
     const {
         token: { colorBgContainer },

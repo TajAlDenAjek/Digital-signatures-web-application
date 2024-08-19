@@ -37,13 +37,6 @@ function Fingerprint() {
       
     },[]);
     return <>
-        <h3>
-             Note : it will not work on localhost serve it using ngrok then try it out
-             there might be a 
-             <a href="https://stackoverflow.com/questions/52870513/webauthn-development-on-localhost" > 
-                workaround for this
-             </a>
-        </h3>
         <hr/>
         <Button onClick={register}>  
             register your fingerprint

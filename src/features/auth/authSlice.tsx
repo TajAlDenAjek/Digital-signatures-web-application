@@ -43,16 +43,20 @@ const authSlice = createSlice({
                 firstName:data?.firstName,
                 middleName:data?.middleName,
                 lastName:data?.lastName,
+                email:data?.email,
                 permission:data?.role,
-                certificate: data?.permission 
+                certificate: data?.permission ,
+
             }
             state.id = user?.id;
             state.firstName = user?.firstName;
             state.middleName = user?.middleName;
             state.lastName = user?.lastName;
+            state.email=user?.email
             state.permission = user?.permission;
             state.token = token
             state.certificate = user?.certificate ;
+            
             
             // localStorage.setItem('auth',JSON.stringify(user))
             Cookies.set('digital_signature_website_cookie', JSON.stringify(user), {  secure: true });
@@ -82,3 +86,4 @@ export const selectCurrentUserName = (state: RootState) => state.auth.firstName
 export const selectCurrentPermission = (state: RootState) => state.auth.permission
 export const selectCurrentToken = (state: RootState) => state.auth.token
 export const selectCurrentCert = (state: RootState) => state.auth.certificate ;
+export const selectUserEmaali = (state: RootState) => state.auth.email ;
