@@ -34,10 +34,10 @@ function DigitalIdentity() {
     let keys =  await generatePrivateAndPublicKey();
     try{
       let res = await createDigitalCertificate({publicKey: keys.publicKey}).unwrap() ;
-      
       localStorage.setItem('privateKey' , keys.privateKey);
       saveToFile(keys.privateKey) ;
       message.error('Please store you private key in a safe place') ;
+      // location.reload()
     }
     catch(err){
       showErrors(err);
