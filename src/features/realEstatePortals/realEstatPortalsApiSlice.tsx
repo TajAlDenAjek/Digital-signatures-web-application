@@ -36,7 +36,7 @@ export const portalsApiSlice = apiSlice.injectEndpoints({
         }),
         createPortal: builder.mutation({
             query: data => {
-                console.log('here')
+                // console.log('here')
                 const BodyFormData=new FormData()
                 BodyFormData.append('contract',data?.contract?.file?.originFileObj)
                 BodyFormData.append('contractName',data?.contractName)
