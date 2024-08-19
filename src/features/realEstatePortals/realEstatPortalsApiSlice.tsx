@@ -37,13 +37,12 @@ export const portalsApiSlice = apiSlice.injectEndpoints({
         createPortal: builder.mutation({
             query: data => {
                 // console.log('here')
-                const BodyFormData=new FormData()
-                BodyFormData.append('contract',data?.contract?.file?.originFileObj)
-                BodyFormData.append('contractName',data?.contractName)
-                BodyFormData.append('description',data?.description)
+                const BodyFormData = new FormData()
+                BodyFormData.append('taboImage', data?.taboImage?.file?.originFileObj)
+                BodyFormData.append('reqName', data?.reqName)
                 // BodyFormData.append('contract', data?.contract);
                 return {
-                    url: `/user/getUserPortalRequests`,
+                    url: `/user/createPortalRequest`,
                     method: 'POST',
                     body: BodyFormData,
                     formData: true,
@@ -53,16 +52,15 @@ export const portalsApiSlice = apiSlice.injectEndpoints({
         }),
         governmentUpdatePortal: builder.mutation({
             query: data => {
-                console.log('here')
-                const BodyFormData=new FormData()
-                BodyFormData.append('contract',data?.contract?.file?.originFileObj)
-                BodyFormData.append('contractName',data?.contractName)
-                BodyFormData.append('description',data?.description)
+                // console.log('here')
+                // const BodyFormData = new FormData()
+                // BodyFormData.append('reqName', data?.reqName)
+                // BodyFormData.append('message', data?.message)
                 // BodyFormData.append('contract', data?.contract);
                 return {
-                    url: `/government/processPortalRequest/${data?.id}`,
+                    url: `/admin/checkPortalRequest/${data?.id}`,
                     method: 'PUT',
-                    body: BodyFormData,
+                    body: data?.data,
                     formData: true,
                 };
             },
@@ -71,15 +69,14 @@ export const portalsApiSlice = apiSlice.injectEndpoints({
         adminUpdatePorta: builder.mutation({
             query: data => {
                 console.log('here')
-                const BodyFormData=new FormData()
-                BodyFormData.append('contract',data?.contract?.file?.originFileObj)
-                BodyFormData.append('contractName',data?.contractName)
-                BodyFormData.append('description',data?.description)
+                const BodyFormData = new FormData()
+                // BodyFormData.append('reqName', data?.reqName)
+                // BodyFormData.append('message', data?.message)
                 // BodyFormData.append('contract', data?.contract);
                 return {
                     url: `/admin/checkPortalRequest/${data?.id}`,
                     method: 'PUT',
-                    body: BodyFormData,
+                    body: data?.data,
                     formData: true,
                 };
             },
@@ -95,6 +92,8 @@ export const {
     useGetUserPortalsQuery,
     useGetGovernmentPortalsQuery,
     useDeletePortalMutation,
-    useCreatePortalMutation
+    useCreatePortalMutation,
+    useAdminUpdatePortaMutation,
+    useGovernmentUpdatePortalMutation
 
 } = portalsApiSlice

@@ -1,10 +1,10 @@
-import React from 'react'
+import React,{useState} from 'react'
 import AdminTable from '../../components/CustomAdminTable/AdminTable'
 import { portalsColumns } from '../../constants/columns.tsx'
 import { useGetDocumentsQuery } from '../../features/documents/documentsApiSlice.tsx'
 import type { TableProps } from 'antd';
 import { Space, Table, Tag } from 'antd';
-import { useGetAdminPortalsQuery ,useDeletePortalMutation} from '../../features/realEstatePortals/realEstatPortalsApiSlice.tsx';
+import { useGetAdminPortalsQuery ,useDeletePortalMutation,useAdminUpdatePortaMutation} from '../../features/realEstatePortals/realEstatPortalsApiSlice.tsx';
 import { Spin, Empty, Button } from 'antd'
 import {
     Form, message,
@@ -14,6 +14,9 @@ import {
     Image
 
 } from 'antd'
+import { useUpdateStatusMutation } from '../../features/digitalIdentity/digitalIdentityApiSlice.tsx';
+let SERVER_SIDE = import.meta.env.VITE_REACT_API_KEY
+
 const CustomComponent = ({
     currentData,
     mode,
@@ -25,13 +28,16 @@ const CustomComponent = ({
     const onFinish = async (values: any) => {
         try {
             const data = await handleUpdate({
+                // 'reqName', data?.reqName)
+                // BodyFormData.append('message'
                 id: currentData?.id, data: {
-                    ...values,
+                    reqStatus:currentData?.reqStatus,
+                    message:values?.message
                 }
             }).unwrap()
             message.success('Update Successful')
         } catch (error: any) {
-            message.error('Something went wrong')
+            // message.error('Something went wrong')
         }
     }
     return (
@@ -46,16 +52,16 @@ const CustomComponent = ({
                 onKeyDown={(e) => e.key == "Enter" ? e.preventDefault() : ''}
 
             >
-                <Form.Item label='Tabo Image' name={'taboImage'} rules={[{ required: mode == 'Edit' }]}>
+                <Form.Item label='Tabo Image' name={'taboImage'} rules={[{ required: false}]}>
                     {
-                        <Image src={currentData?.image_frontSide as string} />
+                        <Image src={`${SERVER_SIDE}/${currentData?.taboImage}` as string} width={'400px'} />
                     }
                 </Form.Item>
-                <Form.Item label='Request Name' name={'reqName'} rules={[{ required: mode == 'Edit' }]}>
+                <Form.Item label='Request Name' name={'reqName'} rules={[{ required: false}]}>
                     {
-                        mode === 'Edit' ?
-                            <Input type='text' />
-                            : <Typography.Text>{currentData.reqName}</Typography.Text>
+                        // mode === 'Edit' ?
+                        //     <Input type='text' />
+                         <Typography.Text>{currentData.reqName}</Typography.Text>
                     }
                 </Form.Item>
                 <Form.Item label='Message' name={'message'} rules={[{ required: mode == 'Edit' }]}>
@@ -65,11 +71,10 @@ const CustomComponent = ({
                             : <Typography.Text>{currentData.message}</Typography.Text>
                     }
                 </Form.Item>
-                <Form.Item label='Request Status' name={'reqStatus'} rules={[{ required: mode == 'Edit' }]}>
+                <Form.Item label='Request Status' name={'reqStatus'} rules={[{ required: false}]}>
                     {
-                        mode === 'Edit' ?
-                            <Input type='text' />
-                            : <Typography.Text>{currentData.reqStatus}</Typography.Text>
+                      
+                    <Typography.Text>{currentData.reqStatus}</Typography.Text>
                     }
                 </Form.Item>
                 {
@@ -91,6 +96,16 @@ const ManagePortals = () => {
         error
     } = useGetAdminPortalsQuery({})
     const [deleteUser, { }] = useDeletePortalMutation()
+    const [updatePortal, { isLoading: isUpdating }] = useAdminUpdatePortaMutation()
+    const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false)
+    const handleUpdate = async (data: any) => {
+        try {
+            await updatePortal(data).unwrap()
+            message.success('Portal Request Updated ')
+        } catch (error: any) {
+            message.error('Something went wrong')
+        }
+    }
     const handleDelete = async (id: any) => {
         try {
             await deleteUser(id).unwrap()
@@ -103,7 +118,7 @@ const ManagePortals = () => {
     if (isLoading) {
         content = <AdminTable columns={portalsColumns} data={currentData?.data} isLoading={isLoading} tableTitle={"Portal Request"} />
     } else if (isSuccess) {
-        content = <AdminTable columns={portalsColumns} data={currentData?.data} tableTitle={"Portal Request"} ModalContent={CustomComponent} actions={['view','delete']} handleDelete={handleDelete} />
+        content = <AdminTable columns={portalsColumns} data={currentData?.data} tableTitle={"Portal Request"} ModalContent={CustomComponent} actions={['view','delete','edit']} handleDelete={handleDelete} handleUpdate={handleUpdate} isUpdating={isUpdating}/>
     } else if (isError) {
         content = <>{error}</>
     }
