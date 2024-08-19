@@ -11,8 +11,10 @@ export const DigitalIdentityApiSlice = apiSlice.injectEndpoints({
                 url:'/v2/C_Orders/createDigitalCertificate',
                 method:'POST',
                 body:data
-            })
-        })
+            }),
+            invalidatesTags: ['Digital-certficate-requests']
+
+        }),
         
     })
 })
