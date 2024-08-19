@@ -13,18 +13,18 @@ const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const modalContainerRef = useRef();
 
-  const test = async ()=>{
-    let random = Math.random()* 10;
-    let keys = await generatePrivateAndPublicKey();
-    console.log('public' , random  , keys.publicKey) ;
-    console.log('private' , random , keys.privateKey);
-    let signature =await  sign('hello', keys.privateKey);
-    console.log('signature', random ,signature);
-    let verify2 =  await verify(signature , keys.publicKey , 'hello');
-    console.log('verify' , random ,verify2);
-  }
+  // const test = async ()=>{
+  //   let random = Math.random()* 10;
+  //   let keys = await generatePrivateAndPublicKey();
+  //   console.log('public' , random  , keys.publicKey) ;
+  //   console.log('private' , random , keys.privateKey);
+  //   let signature =await  sign('hello', keys.privateKey);
+  //   console.log('signature', random ,signature);
+  //   let verify2 =  await verify(signature , keys.publicKey , 'hello');
+  //   console.log('verify' , random ,verify2);
+  // }
   useEffect(()=>{
-    test();
+    // test();
   },[])
   
   return (

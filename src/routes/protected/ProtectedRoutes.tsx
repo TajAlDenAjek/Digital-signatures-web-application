@@ -19,6 +19,7 @@ import ManageContracts from "../../pages/AdminPages/ManageContracts";
 import ManageDocuments from "../../pages/AdminPages/MangeDocuments";
 import ManageDigitalCertficatesRequests from "../../pages/AdminPages/ManageDigitalCertficateRequests";
 import ManagePortals from "../../pages/AdminPages/ManagePortals";
+import RealEstatePortal from "../../pages/RealEstatePortal/RealEstatePortal";
 export const adminRoutes: RouteObject[] = [
     {
         path: '/admin/users',
@@ -129,4 +130,8 @@ export const userRoutes: RouteObject[] = [
         path: '/',
         element: <Home />
     },
+    {
+        path:'/real-estate-portal',
+        element: <RealEstatePortal></RealEstatePortal>
+    }
 ];

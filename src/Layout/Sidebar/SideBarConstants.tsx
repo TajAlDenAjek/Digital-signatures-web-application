@@ -110,5 +110,11 @@ export const userPages: SideBarPage[]|any = [
         icon: React.createElement(SecurityScanOutlined),
         label: `Fingerprint`,
         url: '/fingerprint'
-    },  
+    },
+    {
+        key:'6',
+        icon: React.createElement(SecurityScanOutlined),
+        label:'Real Estate Portal',
+        url:'/real-estate-portal'
+    }
 ]
