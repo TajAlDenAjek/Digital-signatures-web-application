@@ -16,7 +16,35 @@ export const testColumns: any[] = [
         key: 'email'
     }
 ];
-
+export const portalsColumns: any[] = [
+    {
+        title: 'Request Name',
+        dataIndex: 'reqName',
+        key: 'reqName'
+    },
+    {
+        title: 'Message',
+        dataIndex: 'message',
+        key: 'message'
+    },
+    {
+        title: 'Request Status',
+        dataIndex: 'reqStatus',
+        key: 'reqStatus',
+        render: (_: any, record: any) => {
+            return <Tag color={
+                record?.reqStatus==='approved' ?
+                 'green' 
+                 :
+                 record?.reqStatus==='rejected' ?
+                 'red'
+                 : 
+                 record?.reqStatus==='pending' ?'volcano':'cyan'
+            }>
+                {record?.reqStatus}</Tag>
+        }
+    },
+];
 export const digitalCertificatesOrdersColumns: any[] = [
     {
         title: 'Full Name',
@@ -46,6 +74,7 @@ export const digitalCertificatesOrdersColumns: any[] = [
         }
     },
 ];
+
 
 export const ContractsColumn: any[] = [
     {
