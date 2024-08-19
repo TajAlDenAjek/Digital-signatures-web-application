@@ -14,6 +14,9 @@ import {
     Image
 
 } from 'antd'
+
+let SERVER_SIDE = import.meta.env.VITE_REACT_API_KEY
+
 const CustomComponent = ({
     currentData,
     mode,
@@ -34,6 +37,7 @@ const CustomComponent = ({
             message.error('Something went wrong')
         }
     }
+    console.log('front image ' , `${SERVER_SIDE}/${currentData?.image_frontSide}`)
     return (
         <>
             <Form
@@ -47,13 +51,11 @@ const CustomComponent = ({
 
             >
                 <Form.Item label='Image FrontSide' name={'image_frontSide'} rules={[{ required: mode == 'Edit' }]}>
-                    {
-                        <Image src={currentData?.image_frontSide as string} />
-                    }
+                    <Image src={`${SERVER_SIDE}/${currentData?.image_frontSide}`} width={'400px'}/>
                 </Form.Item>
                 <Form.Item label='Image BackSide' name={'image_backSide'} rules={[{ required: mode == 'Edit' }]}>
                     {
-                        <Image src={currentData?.image_backSide as string} />
+                        <Image src={`${SERVER_SIDE}/${currentData?.image_backSide}` as string} width={'400px'}/>
                     }
                 </Form.Item>
                 <Form.Item label='Full Name' name={'fullName'} rules={[{ required: mode == 'Edit' }]}>

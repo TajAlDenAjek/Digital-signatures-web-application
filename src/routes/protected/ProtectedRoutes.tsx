@@ -17,7 +17,8 @@ import ManageUsers from "../../pages/AdminPages/ManageUsers";
 import ManageAdmins from "../../pages/AdminPages/ManageAdmins";
 import ManageContracts from "../../pages/AdminPages/ManageContracts";
 import ManageDocuments from "../../pages/AdminPages/MangeDocuments";
-
+import ManageDigitalCertficatesRequests from "../../pages/AdminPages/ManageDigitalCertficateRequests";
+import ManagePortals from "../../pages/AdminPages/ManagePortals";
 export const adminRoutes: RouteObject[] = [
     {
         path: '/admin/users',
@@ -37,11 +38,11 @@ export const adminRoutes: RouteObject[] = [
     },
     {
         path: '/admin/digital-certifcates-requests',
-        element: <Document></Document>
+        element: <ManageDigitalCertficatesRequests/>
     },
     {
         path: '/admin/portals',
-        element: <Document></Document>
+        element: <ManagePortals/>
     },
     {
         path: '/',
