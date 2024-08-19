@@ -4,6 +4,8 @@ import { Button, Form, Input, Row, Col, DatePicker, Select, Upload, message, Tag
 import Icon from '@ant-design/icons/lib/components/Icon';
 import './DocumentForm.css'
 import CustomUpload from '../customUpload/CustomUpload';
+import { useStoreDocumentMutation } from '../../features/documents/documentsApiSlice';
+import { showErrors } from '../../constants/helpers';
 
 type FieldType = {
   email: string,
@@ -25,13 +27,25 @@ const DocumentForm = () => {
 
 
   const user_id: any = 1;
-  const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-    values = { ...values, user_id };
-    console.log(values);
-  };
+
   const [state, setState] = useState({ loading: false });
   const [emails, setEmails] = useState([]);
   const [email, setEmail] = useState('');
+  const [storeDocument , {} ] = useStoreDocumentMutation() ;
+  
+  const onFinish: FormProps<FieldType>['onFinish'] =async  (values) => {
+    const data = { ...values, emails  };
+     try{
+      let res = await storeDocument(data).unwrap();
+
+     }
+     catch(err){
+      showErrors(err);
+     }
+    // console.log(values);
+    
+    
+  };
   const uploadButton = (
     <div>
       <Icon type={state.loading ? 'loading' : 'plus'} />
@@ -93,8 +107,10 @@ const DocumentForm = () => {
                 <Input onChange={(e) => { setEmail(e.target.value) }}
                   value={email}
                   onPressEnter={() => {
-                    if (email.match(/(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i))
+                    if (email.match(/(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i)){
                       setEmails([...emails, email])
+                      setEmail('');
+                    }
                     else {
                       message.error('not a valid email address')
                     }

@@ -44,6 +44,20 @@ export const documentsApiSlice = apiSlice.injectEndpoints({
                 url:'document',
                 method:'GET',
             })
+        }),
+        storeDocument: builder.mutation({
+            query: (values )=> {
+                const data = new FormData() ;
+                data.append('emails' , values.emails ) ; 
+                data.append('document' , values?.document?.file?.originFileObj);
+                data.append('signature' , values.signature) ;
+                return {
+                    url:'/v2/document/',
+                    method:'POST',
+                    body: data , 
+                    formData: true 
+                }
+            }
         })
         
     })
@@ -54,6 +68,7 @@ export const {
     useGetDocumentsQuery,
     useGetMyDocumentsQuery,
     useUploadUserDataMutation,
-    useGetDocumentByIdQuery
+    useGetDocumentByIdQuery,
+    useStoreDocumentMutation
 
 } = documentsApiSlice

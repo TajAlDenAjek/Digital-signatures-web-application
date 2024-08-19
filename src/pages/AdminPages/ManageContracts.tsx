@@ -30,6 +30,7 @@ const CustomComponent = ({
             const data = await handleUpdate({
                 id: currentData?.id, data: {
                     ...values,
+                    contract: values?.contract?.file?.originFileObj
                 }
             }).unwrap()
             message.success('Update Successful')
@@ -87,7 +88,7 @@ const ManageContracts = () => {
     }
     const handleCreateContract = async (data: any) => {
         try {
-            console.log(data)
+            console.log(data.contract ,'...')
             await createContract(data)  
             message.success('Contract status updated Successfuly')
         } catch (error: any) {
@@ -115,8 +116,10 @@ const ManageContracts = () => {
 
     const onFinish1 = async (values: any) => {
         try {
+            console.log(values?.contract?.file?.originFileObj);
             handleCreateContract({
-                ...values
+                ...values,
+                contract: values?.contract?.file?.originFileObj
             })
         } catch (error: any) {
             message.error('Something went wrong')
