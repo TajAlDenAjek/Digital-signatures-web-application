@@ -164,7 +164,7 @@ const ManageContracts = () => {
 
                             <Input type='text' />
                         </Form.Item>
-                        <CustomUpload isPdfFile={true} name={'contract'} customValidatoin={'Please upload your contract'} />
+                        <CustomUpload form={form1} isPdfFile={true} name={'contract'} customValidatoin={'Please upload your contract'} />
                         <Button type='primary' htmlType='submit' disabled={isCreating}>{isCreating ? "Creating..." : "Create"}</Button>
                     </Form>
 

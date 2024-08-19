@@ -23,7 +23,7 @@ const getBase64 = (img: FileType, callback: (url: string) => void) => {
 // };
 type Parms = {
 }
-function CustomUpload({ name, customValidatoin = null, isPdfFile }: any) {
+function CustomUpload({ name, customValidatoin = null, isPdfFile,form }: any) {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>();
   const [fileName, setFileName] = useState<string>(name)
@@ -41,7 +41,19 @@ function CustomUpload({ name, customValidatoin = null, isPdfFile }: any) {
       });
     }
   };
+  const handleChangePdf=(info)=>{
+    if(info.file.status==='done'){
+      message.success(`${info.file.name} file uploaded successfuly`)
+    } else if (info.file.status==='error'){
+      message.error(`${info.file.name} file upload failed`)
+    } 
+    if(info.fileList?.length===0){
+      form.setFieldsValue({
+        contract:null
+      })
 
+    }
+  }
   return (
     <div className='custom-upload'>
 
@@ -52,7 +64,7 @@ function CustomUpload({ name, customValidatoin = null, isPdfFile }: any) {
         {
           isPdfFile ?
             <Upload
-              onChange={handleChange}
+              onChange={handleChangePdf}
               showUploadList={true}
 
               maxCount={1}
