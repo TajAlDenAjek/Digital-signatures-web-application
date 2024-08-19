@@ -15,12 +15,21 @@ export const DigitalIdentityApiSlice = apiSlice.injectEndpoints({
             invalidatesTags: ['Digital-certficate-requests']
 
         }),
+        getDigitalCertificatesOrders: builder.query({
+            query: () => ({
+                url: '/C_Orders/getAllCertificateOrders',
+                method: 'GET'
+            }),
+            providesTags: ['Digital-certficate-requests']
+        }),
         
-    })
+    }),
+   
 })
 
 
 export const {
-    useCreateDigitalCertificateMutation
+    useCreateDigitalCertificateMutation,
+    useGetDigitalCertificatesOrdersQuery
 
 } = DigitalIdentityApiSlice
