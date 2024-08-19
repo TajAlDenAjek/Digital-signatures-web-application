@@ -19,6 +19,7 @@ import ManageContracts from "../../pages/AdminPages/ManageContracts";
 import ManageDocuments from "../../pages/AdminPages/MangeDocuments";
 import ManageDigitalCertficatesRequests from "../../pages/AdminPages/ManageDigitalCertficateRequests";
 import ManagePortals from "../../pages/AdminPages/ManagePortals";
+import GovernmentManagePortals from "../../pages/GovernmenetPages/GovernmentManagePortals";
 export const adminRoutes: RouteObject[] = [
     {
         path: '/admin/users',
@@ -53,28 +54,12 @@ export const adminRoutes: RouteObject[] = [
 
 export const governmentOfficerRoutes: RouteObject[] = [
     {
-        path: '/gov/users',
-        element: <Users type={'user'} ></Users>
+        path: '/gov/portals',
+        element: <GovernmentManagePortals/>
     },
     {
-        path: '/gov/users/:id',
-        element: <h1>not implmented - T3 </h1>
-    },
-    {
-        path: '/gov/users/:id/edit',
-        element: <h1> not implemented - T4 </h1>
-    },
-    {
-        path: '/gov/document',
-        element: <Document />
-    },
-    {
-        path: '/gov/document/:id',
-        element: <h1>not implemented - T1 </h1>
-    },
-    {
-        path: '/gov/document/:id/edit',
-        element: <h1> not implemented - T2 </h1>
+        path: '/gov/digital-certificate orderds',
+        element: <GovernmentManagePortals/>
     },
     {
         path: '/',
