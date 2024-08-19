@@ -1,8 +1,8 @@
 import React from 'react'
 import { useRoutes, Route, BrowserRouter as Router, Routes, } from 'react-router-dom'
 import LayoutContainer from '../Layout/Layout'
-import { adminRoutes, governmentOfficerRoutes,userRoutes} from './protected/ProtectedRoutes'
-import { selectCurrentPermission } from '../features/auth/authSlice'
+import { adminRoutes, governmentOfficerRoutes,userPagesOne,userPagesZero,userRoutes} from './protected/ProtectedRoutes'
+import { selectCurrentCert, selectCurrentPermission } from '../features/auth/authSlice'
 import { publicPages, appPages } from './public/PublicRoutes'
 import { useSelector } from "react-redux"
 import RequireAuth from '../features/auth/RequireAuth'
@@ -10,8 +10,9 @@ import { Permissions } from '../features/auth/authSlice'
 
 const MainRouter = () => {
     const permission: Permissions | null = useSelector(selectCurrentPermission)
-    const protectedPages = permission === 'admin' ? adminRoutes : permission === "governmentOfficial" ? governmentOfficerRoutes : userRoutes
-    // const protectedPages = governmentOfficerRoutes ;
+    const cert = useSelector(selectCurrentCert) ;
+    let protectedPages = permission === 'admin' ? adminRoutes : permission === "governmentOfficial" ? governmentOfficerRoutes : (cert == 2  ?userRoutes : (cert == 1 ? userPagesOne : userPagesZero))
+    
     return (
         <Router>
             <Routes>

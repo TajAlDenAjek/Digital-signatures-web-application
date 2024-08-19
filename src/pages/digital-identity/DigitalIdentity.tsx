@@ -1,5 +1,5 @@
 import Icon from '@ant-design/icons/lib/components/Icon';
-import { Button, Col, Form, Input, Row, Select, Tag, Upload, message } from 'antd'
+import { Button, Col, Form, Input, Row, Select, Tag, Typography, Upload, message } from 'antd'
 import React, { useState } from 'react'
 import ReCAPTCHA from "react-google-recaptcha";
 import { generatePrivateAndPublicKey, showErrors } from '../../constants/helpers';
@@ -16,6 +16,17 @@ import { useCreateDigitalCertificateMutation } from '../../features/digitalIdent
 
 
 function DigitalIdentity() {
+  const saveToFile = (privateKey: any)=>{
+    const data = new Blob([privateKey], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(data);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'private.key';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
+  
   const [captchaPassed , setCaptchaPassed] = useState(0) ;
   const [createDigitalCertificate , {} ] = useCreateDigitalCertificateMutation();
 
@@ -23,7 +34,10 @@ function DigitalIdentity() {
     let keys =  await generatePrivateAndPublicKey();
     try{
       let res = await createDigitalCertificate({publicKey: keys.publicKey}).unwrap() ;
+      
       localStorage.setItem('privateKey' , keys.privateKey);
+      saveToFile(keys.privateKey) ;
+      message.error('Please store you private key in a safe place') ;
     }
     catch(err){
       showErrors(err);
@@ -44,6 +58,7 @@ function DigitalIdentity() {
         >
           Generate Identity
         </Button>
+        
       </Col>
       
       

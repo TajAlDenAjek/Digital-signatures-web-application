@@ -121,3 +121,27 @@ export const userRoutes: RouteObject[] = [
         element: <RealEstatePortal></RealEstatePortal>
     }
 ];
+export const userPagesZero = [
+    {
+        path: '/profile',
+        element: <Profile></Profile>
+    },
+    {
+        path: '/',
+        element: <Home />
+    },
+]
+export const userPagesOne =[
+    {
+        path: '/profile',
+        element: <Profile></Profile>
+    },
+    {
+        path: '/digital-identity/generate',
+        element: <DigitalIdentity />
+    },
+    {
+        path: '/',
+        element: <Home />
+    },
+]

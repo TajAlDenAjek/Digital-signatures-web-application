@@ -118,3 +118,26 @@ export const userPages: SideBarPage[]|any = [
         url:'/real-estate-portal'
     }
 ]
+
+export const userPagesZero = [
+    {
+        key: '1',
+        icon: React.createElement(UserOutlined),
+        label: `Profile`,
+        url: '/profile'
+    },    
+]
+export const userPagesOne = [
+    {
+        key: '1',
+        icon: React.createElement(UserOutlined),
+        label: `Profile`,
+        url: '/profile'
+    },
+    {
+        key: '2',
+        icon: React.createElement(SafetyCertificateFilled),
+        label: `Digital identity`,
+        url: '/digital-identity/generate'
+    }, 
+]
