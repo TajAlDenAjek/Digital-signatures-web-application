@@ -6,7 +6,7 @@ import DigitalSignature from '../../pages/maindegital/MainDegital.tsx'
 
 export const publicPages:RouteObject[] = [
     {
-        path:'/',
+        path:'/home',
         element:<DigitalSignature/>
     },
     {

@@ -8,8 +8,14 @@ body {
     background-size: cover; /* تجعل الصورة تغطي كامل الخلفية */
     background-position: center; /* تضبط الصورة لتكون في مركز الخلفية */
     background-repeat: no-repeat; /* تمنع تكرار الصورة */
+    /* height: 100%; */
+    min-height: 100vh;
 }
-
+#root{
+    /* height: 100%; */
+    /* display: flex; */
+    /* justify-content: ; */
+}
 /* TopBar Styling */
 .topbar {
     display: flex;
@@ -61,14 +67,18 @@ body {
     justify-content: center;
     margin: 60px auto;
     padding: 40px;
+    height: 550px;
+
     border: 1px solid #d1d5db;
     border-radius: 16px;
-    background-color: rgba(255, 255, 255, 0.5); /* لون أبيض مع شفافية */
+    background-color: rgba(255, 255, 255, 0.9); /* لون أبيض مع شفافية */
     max-width: 700px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-
+.container{
+    height: 10px;
+}
 .welcome-image {
     width: 100%;
     max-width: 400px;
@@ -105,12 +115,15 @@ body {
 
 /* Footer Styling */
 .footer {
-    margin-top: 40px;
+    margin-top: 130px;
     padding: 20px;
     text-align: center;
     background-color: #1e3a8a;
     color: white;
     font-size: 14px;
+    position: fixed;
+    top:0.1;
+    width: 100%;
     /* position: absolute; */
     /* margin-top: 100%; */
 
