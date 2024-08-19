@@ -5,7 +5,7 @@ import Icon from '@ant-design/icons/lib/components/Icon';
 import './DocumentForm.css'
 import CustomUpload from '../customUpload/CustomUpload';
 import { useStoreDocumentMutation } from '../../features/documents/documentsApiSlice';
-import { showErrors } from '../../constants/helpers';
+import { showErrors, sign } from '../../constants/helpers';
 
 type FieldType = {
   email: string,
@@ -32,9 +32,25 @@ const DocumentForm = () => {
   const [emails, setEmails] = useState([]);
   const [email, setEmail] = useState('');
   const [storeDocument , {} ] = useStoreDocumentMutation() ;
-  
+  function getBase64(file:any ) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      console.log(reader?.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+  }
   const onFinish: FormProps<FieldType>['onFinish'] =async  (values) => {
-    const data = { ...values, emails  };
+    if(emails?.length == 0){
+      message.error('input at least one party to sign the document with') ;
+      return ;
+    }
+    let file = getBase64(values?.document?.file.originFileObj)?.split(',')[1];
+    const signature =  await sign( file , localStorage.getItem('privateKey')) ;
+
+    const data = { ...values, emails , signature , base64file: file   };
      try{
       let res = await storeDocument(data).unwrap();
 
@@ -101,12 +117,15 @@ const DocumentForm = () => {
                 <CustomUpload name='document' />
               </Row>
 
-              <Row>
+              <Row >
 
 
                 <Input onChange={(e) => { setEmail(e.target.value) }}
                   value={email}
-                  onPressEnter={() => {
+                  size={'middle'}
+                />
+                <Button
+                  onClick={()=>{
                     if (email.match(/(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i)){
                       setEmails([...emails, email])
                       setEmail('');
@@ -114,9 +133,8 @@ const DocumentForm = () => {
                     else {
                       message.error('not a valid email address')
                     }
-
                   }}
-                />
+                > Add to the list </Button>
               </Row>
               <Row justify={'center'}>
                 {
