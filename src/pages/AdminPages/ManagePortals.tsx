@@ -4,7 +4,7 @@ import { portalsColumns } from '../../constants/columns.tsx'
 import { useGetDocumentsQuery } from '../../features/documents/documentsApiSlice.tsx'
 import type { TableProps } from 'antd';
 import { Space, Table, Tag } from 'antd';
-import { useGetDigitalCertificatesOrdersQuery } from '../../features/digitalIdentity/digitalIdentityApiSlice.tsx';
+import { useGetAdminPortalsQuery ,useDeletePortalMutation} from '../../features/realEstatePortals/realEstatPortalsApiSlice.tsx';
 import { Spin, Empty, Button } from 'antd'
 import {
     Form, message,
@@ -89,18 +89,26 @@ const ManagePortals = () => {
         isSuccess,
         isError,
         error
-    } = useGetDigitalCertificatesOrdersQuery({})
-
+    } = useGetAdminPortalsQuery({})
+    const [deleteUser, { }] = useDeletePortalMutation()
+    const handleDelete = async (id: any) => {
+        try {
+            await deleteUser(id).unwrap()
+            message.success('Portal Request Deleted ')
+        } catch (error: any) {
+            message.error('Something went wrong')
+        }
+    }
     let content = <Empty />
     if (isLoading) {
-        content = <AdminTable columns={portalsColumns} data={currentData} isLoading={isLoading} tableTitle={"Digital Certificate Request"} />
+        content = <AdminTable columns={portalsColumns} data={currentData?.data} isLoading={isLoading} tableTitle={"Portal Request"} />
     } else if (isSuccess) {
-        content = <AdminTable columns={portalsColumns} data={currentData} tableTitle={"Digital Certificate Request"} ModalContent={CustomComponent} actions={['view']} />
+        content = <AdminTable columns={portalsColumns} data={currentData?.data} tableTitle={"Portal Request"} ModalContent={CustomComponent} actions={['view','delete']} handleDelete={handleDelete} />
     } else if (isError) {
         content = <>{error}</>
     }
     return (
-        <>
+        <>  
             {content}
         </>
     )
