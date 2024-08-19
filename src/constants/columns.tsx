@@ -115,13 +115,29 @@ export const documentColumns : any[]= [
     {
         title:'Document Status',
         dataIndex:'documentStatus',
-        key:'documentStatus'
+        key:'documentStatus',
+        render: (_: any, record: any)=>{
+            return <Tag color={record?.documentStatus==='processing' ? 'orange' : (record?.documentStatus==='rejected'?'red': 'green')}>{record?.documentStatus}</Tag>
+        }
     },
     {
         title:'Counter',
         dataIndex:'counter',
         key:'counter'
     },
+    {
+        title:'Document file',
+        dataIndex:'document',
+        key:'document',
+        render: (_: any, record: any)=>{
+            return <Tooltip title={"Download file"}>
+                <ArrowDownOutlined style={{fontSize:'110%',color:'purple'}} onClick={()=>{
+                    window.open(`${SERVER_SIDE}/${record.document}`)
+                }}/>
+            </Tooltip>
+        }
+      },
+    
 ];
 
 export const myDocumentsColumn = [

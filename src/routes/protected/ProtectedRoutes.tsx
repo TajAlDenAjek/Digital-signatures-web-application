@@ -16,7 +16,7 @@ import SingleDocument from "../../pages/document/SingleDocument";
 import ManageUsers from "../../pages/AdminPages/ManageUsers";
 import ManageAdmins from "../../pages/AdminPages/ManageAdmins";
 import ManageContracts from "../../pages/AdminPages/ManageContracts";
-
+import ManageDocuments from "../../pages/AdminPages/MangeDocuments";
 
 export const adminRoutes: RouteObject[] = [
     {
@@ -33,7 +33,7 @@ export const adminRoutes: RouteObject[] = [
     },
     {
         path: '/admin/documents',
-        element: <Document></Document>
+        element: <ManageDocuments/>
     },
     {
         path: '/admin/digital-certifcates-requests',
