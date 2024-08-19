@@ -22,6 +22,15 @@ export const DigitalIdentityApiSlice = apiSlice.injectEndpoints({
             }),
             providesTags: ['Digital-certficate-requests']
         }),
+        updateStatus: builder.mutation({
+            query: data=>({
+                url:`/C_Orders/changeOrderStatus/${data.id}`,
+                method:'POST',
+                body:data?.data
+            }),
+            invalidatesTags: ['Digital-certficate-requests']
+
+        }),
         
     }),
    
@@ -30,6 +39,7 @@ export const DigitalIdentityApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useCreateDigitalCertificateMutation,
-    useGetDigitalCertificatesOrdersQuery
+    useGetDigitalCertificatesOrdersQuery,
+    useUpdateStatusMutation
 
 } = DigitalIdentityApiSlice
