@@ -14,7 +14,7 @@ const DigitalSignature: React.FC = () => {
   };
 
   return (
-    <div>
+    <div >
       {/* TopBar */}
       <div className="topbar">
         <div className="app-name">D-sign</div>
@@ -26,7 +26,7 @@ const DigitalSignature: React.FC = () => {
 
       {/* Main Content */}
       <div className="digital-signature-container">
-       
+
         <h1 className="welcome-message">Welcome to Digital Signature App</h1>
         <p>
           We are delighted to have you here. This application helps you sign documents securely and efficiently.
@@ -41,7 +41,7 @@ const DigitalSignature: React.FC = () => {
 
       {/* Footer */}
       <div className="footer">
-     © 2024 All Rights Reserved
+        © 2024 All Rights Reserved
       </div>
     </div>
   );
