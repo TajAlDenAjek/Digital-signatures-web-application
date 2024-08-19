@@ -14,7 +14,7 @@ const DigitalSignature: React.FC = () => {
   };
 
   return (
-    <div >
+    <div className='container'>
       {/* TopBar */}
       <div className="topbar">
         <div className="app-name">D-sign</div>
