@@ -20,6 +20,7 @@ import ManageDocuments from "../../pages/AdminPages/MangeDocuments";
 import ManageDigitalCertficatesRequests from "../../pages/AdminPages/ManageDigitalCertficateRequests";
 import ManagePortals from "../../pages/AdminPages/ManagePortals";
 import GovernmentManagePortals from "../../pages/GovernmenetPages/GovernmentManagePortals";
+import GovernmentmangeDigitalCertifcates from "../../pages/GovernmenetPages/GovernmentmangeDigitalCertifcates";
 export const adminRoutes: RouteObject[] = [
     {
         path: '/admin/users',
@@ -59,7 +60,7 @@ export const governmentOfficerRoutes: RouteObject[] = [
     },
     {
         path: '/gov/digital-certificate orderds',
-        element: <GovernmentManagePortals/>
+        element: <GovernmentmangeDigitalCertifcates/>
     },
     {
         path: '/',
