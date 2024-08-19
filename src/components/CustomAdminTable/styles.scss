@@ -8,6 +8,11 @@
         font-weight: bolder;
         font-family: 'Times New Roman', Times, serif;
         font-size: 14px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        max-width: 50px;
 
     }
     // .ant-table-cell:nth-child(odd){
