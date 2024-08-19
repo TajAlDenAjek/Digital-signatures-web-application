@@ -1,6 +1,6 @@
 import { Tag,Tooltip } from "antd";
 import { render } from "react-dom";
-import { DownCircleFilled } from '@ant-design/icons'
+import { ArrowDownOutlined } from '@ant-design/icons'
 let SERVER_SIDE = import.meta.env.VITE_REACT_API_KEY 
 
 
@@ -34,7 +34,7 @@ export const ContractsColumn : any[] = [
         key:'contract',
         render: (_: any, record: any)=>{
             return <Tooltip title={"Download file"}>
-                <DownCircleFilled style={{fontSize:'110%',color:'purple'}} onClick={()=>{
+                <ArrowDownOutlined style={{fontSize:'110%',color:'purple'}} onClick={()=>{
                     window.open(`${SERVER_SIDE}/${record.contract}`)
                 }}/>
             </Tooltip>
