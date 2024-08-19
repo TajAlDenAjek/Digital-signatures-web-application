@@ -31,7 +31,7 @@ const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
     // try first request
     let result:any = await baseQuery(args, api, extraOptions)
     // your token maybe expired 
-    if (result?.error?.status === 401 || result?.error?.data?.status==403){
+    if (result?.error?.status === 401 ){
         api.dispatch(logOut())
         message.error('Your session has expired, please login again')
     }

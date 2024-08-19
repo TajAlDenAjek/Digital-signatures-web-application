@@ -75,7 +75,7 @@ body {
     height: auto;
     margin-bottom: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
 
 .welcome-message {
@@ -111,6 +111,9 @@ body {
     background-color: #1e3a8a;
     color: white;
     font-size: 14px;
+    /* position: absolute; */
+    /* margin-top: 100%; */
+
 }
 
 /* Media Queries for responsiveness */

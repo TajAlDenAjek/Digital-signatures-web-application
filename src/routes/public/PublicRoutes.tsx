@@ -2,9 +2,13 @@ import type { RouteObject } from "react-router-dom";
 import Login from "../../pages/login/Login";
 import Register from "../../pages/register/Register";
 import NotFound404Page from "../../pages/systemPages/NotFound404/NotFound404Page";
-
+import DigitalSignature from '../../pages/maindegital/MainDegital.tsx'
 
 export const publicPages:RouteObject[] = [
+    {
+        path:'/',
+        element:<DigitalSignature/>
+    },
     {
         path: '/login',
         element: <Login />

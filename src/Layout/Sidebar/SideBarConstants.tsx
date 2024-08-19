@@ -68,14 +68,14 @@ export const governmentOfficerPages: SideBarPage[] = [
     {
         key: '1',
         icon: React.createElement(PaperClipOutlined),
-        label: `Manage Documents`,
-        url: '/gov/document'
+        label: `Manage Reale Estate Protals`,
+        url: '/gov/portals'
     },
     {
         key: '2',
         icon: React.createElement(UserAddOutlined),
-        label: `Manage Users`,
-        url: '/gov/users'
+        label: `Manage digital Certifcate Orderds`,
+        url: '/gov/digital-certificate orderds'
     }
 ]
 
