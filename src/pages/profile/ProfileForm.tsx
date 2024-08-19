@@ -70,7 +70,7 @@ const ProfileForm = () => {
             rules={[{
               required: true,            
               pattern: new RegExp(/^\d{10}$/),
-              message: "Natinoal number is required and must have 11 digits"
+              message: "Natinoal number is required and must have 10 digits"
             }]}
           >
             <Input type='text'

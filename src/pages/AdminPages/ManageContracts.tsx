@@ -88,8 +88,8 @@ const ManageContracts = () => {
     }
     const handleCreateContract = async (data: any) => {
         try {
-            console.log(data.contract ,'...')
-            await createContract(data)  
+            console.log(data)
+            await createContract(data).unwrap()
             message.success('Contract status updated Successfuly')
         } catch (error: any) {
             message.error('Something went wrong')
@@ -116,10 +116,8 @@ const ManageContracts = () => {
 
     const onFinish1 = async (values: any) => {
         try {
-            console.log(values?.contract?.file?.originFileObj);
-            handleCreateContract({
+            await handleCreateContract({
                 ...values,
-                contract: values?.contract?.file?.originFileObj
             })
         } catch (error: any) {
             message.error('Something went wrong')
@@ -166,7 +164,7 @@ const ManageContracts = () => {
 
                             <Input type='text' />
                         </Form.Item>
-                        <CustomUpload name={'contract'} />
+                        <CustomUpload form={form1} isPdfFile={true} name={'contract'} customValidatoin={'Please upload your contract'} />
                         <Button type='primary' htmlType='submit' disabled={isCreating}>{isCreating ? "Creating..." : "Create"}</Button>
                     </Form>
 

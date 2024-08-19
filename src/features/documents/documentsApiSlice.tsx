@@ -13,6 +13,8 @@ export const documentsApiSlice = apiSlice.injectEndpoints({
             transformResponse(baseQueryReturnValue, meta, arg) {
                 return baseQueryReturnValue?.data ;
             },
+            providesTags: ['Documents']
+
         }),
         getMyDocuments: builder.query({
             query: ()=>({
@@ -22,6 +24,8 @@ export const documentsApiSlice = apiSlice.injectEndpoints({
             transformResponse(baseQueryReturnValue, meta, arg) {
                 return baseQueryReturnValue?.data ;
             },
+            providesTags: ['Documents']
+
         }),
         uploadUserData: builder.mutation({
             query:(values)=>{
@@ -37,7 +41,9 @@ export const documentsApiSlice = apiSlice.injectEndpoints({
                     body:data,
                     formData:true 
                 }
-            }
+            },
+            invalidatesTags: ['Documents']
+
         }),
         getDocumentById: builder.query({
             query:({id})=>({
@@ -47,6 +53,7 @@ export const documentsApiSlice = apiSlice.injectEndpoints({
             transformResponse(baseQueryReturnValue, meta, arg) {
                 return baseQueryReturnValue?.data;
             },
+            providesTags: ['Documents']
         }),
         storeDocument: builder.mutation({
             query: (values )=> {
@@ -69,7 +76,9 @@ export const documentsApiSlice = apiSlice.injectEndpoints({
                 url:`/v2/document/${data.document_id}/sign`,
                 method:'POST',
                 body: data 
-            })
+            }),
+            invalidatesTags: ['Documents']
+
         })
         
     })

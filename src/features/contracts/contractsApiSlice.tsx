@@ -23,12 +23,12 @@ export const conractsApiSlice = apiSlice.injectEndpoints({
         }),
         createContract: builder.mutation({
             query: data => {
-                
+                console.log('here')
                 const BodyFormData=new FormData()
-                // BodyFormData.append('contract',data?.contract?.file?.originFileObj)
+                BodyFormData.append('contract',data?.contract?.file?.originFileObj)
                 BodyFormData.append('contractName',data?.contractName)
                 BodyFormData.append('description',data?.description)
-                BodyFormData.append('contract', data?.contract);
+                // BodyFormData.append('contract', data?.contract);
                 return {
                     url: `/admin/addContract`,
                     method: 'POST',
