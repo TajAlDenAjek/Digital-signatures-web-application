@@ -26,7 +26,7 @@ const MyDocuments = ()=> {
             dataSource={documents}
             route={"/document"}
             actions={[]}
-            defaultActions={['view','edit','delete']}
+            defaultActions={['view']}
         />
 
     </>

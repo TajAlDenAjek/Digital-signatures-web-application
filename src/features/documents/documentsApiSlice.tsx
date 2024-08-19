@@ -40,17 +40,22 @@ export const documentsApiSlice = apiSlice.injectEndpoints({
             }
         }),
         getDocumentById: builder.query({
-            query:()=>({
-                url:'document',
+            query:({id})=>({
+                url:`/user/getDocumentParties/${id}`,
                 method:'GET',
-            })
+            }),
+            transformResponse(baseQueryReturnValue, meta, arg) {
+                return baseQueryReturnValue?.data;
+            },
         }),
         storeDocument: builder.mutation({
             query: (values )=> {
                 const data = new FormData() ;
-                data.append('emails' , values.emails ) ; 
+                data.append('emails' , values?.emails ) ; 
                 data.append('document' , values?.document?.file?.originFileObj);
-                data.append('signature' , values.signature) ;
+                data.append('signature' , values?.signature) ;
+                data.append('base64file' , values?.base64file  );
+                
                 return {
                     url:'/v2/document/',
                     method:'POST',
@@ -58,6 +63,13 @@ export const documentsApiSlice = apiSlice.injectEndpoints({
                     formData: true 
                 }
             }
+        }),
+        signDocument: builder.mutation({
+            query: (data)=>({
+                url:`/v2/document/${data.document_id}/sign`,
+                method:'POST',
+                body: data 
+            })
         })
         
     })
@@ -69,6 +81,7 @@ export const {
     useGetMyDocumentsQuery,
     useUploadUserDataMutation,
     useGetDocumentByIdQuery,
-    useStoreDocumentMutation
+    useStoreDocumentMutation,
+    useSignDocumentMutation
 
 } = documentsApiSlice

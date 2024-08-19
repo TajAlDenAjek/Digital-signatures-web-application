@@ -10,7 +10,26 @@ export const showErrors = (err:any)=>{
         message.error('You have exceeded your requests limit per minute. please try again later.');
     }
 }
+// const getBase64 = async (img: FileType, callback: (url: string) => void) => {
+//     const reader = new FileReader();
+//     reader.addEventListener('load', () => callback(reader.result as string));
+//     reader.readAsDataURL(img);
 
+// };
+export const getBase64 = async (img : any )=>{
+    return ( new Promise((resolve, reject)=>{
+        const reader = new FileReader() ; 
+        reader.addEventListener('load' , ()=>{
+            resolve(reader.result as string ) ;
+        })
+        reader.readAsDataURL(img);
+    }))
+};
+  
+export const getPrivateKey = ()=>{
+    let privateKey : any = localStorage.getItem('privateKey') ; 
+    return privateKey ;
+}
 
 export async function generatePrivateAndPublicKey() {
     const keyPair = await window.crypto.subtle.generateKey(
@@ -90,4 +109,5 @@ export async function verify(signature, publicKey, document) {
 
     return isValid;
 }
+
 

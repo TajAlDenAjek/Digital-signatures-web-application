@@ -145,3 +145,14 @@ export const myDocumentsColumn = [
         render : item  => String(item?.VariousParties.isSigned)
     }
 ]
+
+export const variousPartiesColumns = [
+    {
+        title:'Title',
+        render: item=>  item?.User?.email 
+    },
+    {
+        title:'Signed',
+        render: item => String(item?.isSigned)
+    }
+]

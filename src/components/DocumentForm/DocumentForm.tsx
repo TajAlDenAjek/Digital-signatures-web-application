@@ -5,7 +5,7 @@ import Icon from '@ant-design/icons/lib/components/Icon';
 import './DocumentForm.css'
 import CustomUpload from '../customUpload/CustomUpload';
 import { useStoreDocumentMutation } from '../../features/documents/documentsApiSlice';
-import { showErrors, sign } from '../../constants/helpers';
+import { showErrors, sign , getBase64} from '../../constants/helpers';
 
 type FieldType = {
   email: string,
@@ -17,12 +17,6 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
 
-function getBase64(img: any, callback: any) {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
-  reader.readAsDataURL(img);
-}
-
 const DocumentForm = () => {
 
 
@@ -32,25 +26,19 @@ const DocumentForm = () => {
   const [emails, setEmails] = useState([]);
   const [email, setEmail] = useState('');
   const [storeDocument , {} ] = useStoreDocumentMutation() ;
-  function getBase64(file:any ) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      console.log(reader?.result);
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
-  }
+
   const onFinish: FormProps<FieldType>['onFinish'] =async  (values) => {
     if(emails?.length == 0){
       message.error('input at least one party to sign the document with') ;
       return ;
     }
-    let file = getBase64(values?.document?.file.originFileObj)?.split(',')[1];
-    const signature =  await sign( file , localStorage.getItem('privateKey')) ;
-
-    const data = { ...values, emails , signature , base64file: file   };
+    let base64 = await getBase64(values?.document?.file.originFileObj) ;
+    base64 = String(base64);
+    base64 = base64?.split(',')[1];
+    console.log(base64);
+    const signature =  await sign( base64 , localStorage.getItem('privateKey')) ;
+    console.log(signature)
+    const data = { ...values, emails , signature , base64file: base64   };
      try{
       let res = await storeDocument(data).unwrap();
 

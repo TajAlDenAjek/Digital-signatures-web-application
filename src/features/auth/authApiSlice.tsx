@@ -10,7 +10,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 url: '/user/register',
                 method: 'POST',
                 body: { ...data },
-            })
+            }),
         }),
         login: builder.mutation({
             query: data => ({
@@ -18,7 +18,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: { ...data },
             }),
-            invalidatesTags: ['auth','Users','Admins']
+            invalidatesTags: ['auth','Users','Admins','Contracts','Documents','Digital-certficate-requests','Portals' , 'digitalIdentity' ]
         }),
         logout: builder.mutation({
             query: () => ({
