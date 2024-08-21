@@ -2,102 +2,146 @@ import Home from "../../pages/home/Home";
 import type { RouteObject } from "react-router-dom";
 import Profile from "../../pages/profile/Profile";
 import Document from "../../pages/document/Document";
-import GovermentOfficiers from "../../pages/goverment-officiers/GovermentOfficiers";
 import Users from "../../pages/users/Users";
 import DocumentForm from "../../components/DocumentForm/DocumentForm";
 import ViewGovermentOfficiers from "../../pages/goverment-officiers/ViewGovermentOfficiers";
-
-export const adminRoutes:RouteObject[] = [
-
+import DigitalIdentity from "../../pages/digital-identity/DigitalIdentity";
+import ElectronicSignature from "../../pages/electronic-signature/ElectronicSignature";
+import Stripe from "../../pages/payment/Stripe";
+import Payment from "../../pages/payment/Payment";
+import Fingerprint from "../../pages/fingerprint/Fingerprint";
+import GovermentOfficiers from "../../pages/goverment-officiers/GovermentOfficiers";
+import MyDocuments from "../../pages/document/MyDocuments";
+import SingleDocument from "../../pages/document/SingleDocument";
+import ManageUsers from "../../pages/AdminPages/ManageUsers";
+import ManageAdmins from "../../pages/AdminPages/ManageAdmins";
+import ManageContracts from "../../pages/AdminPages/ManageContracts";
+import ManageDocuments from "../../pages/AdminPages/MangeDocuments";
+import ManageDigitalCertficatesRequests from "../../pages/AdminPages/ManageDigitalCertficateRequests";
+import ManagePortals from "../../pages/AdminPages/ManagePortals";
+import RealEstatePortal from "../../pages/RealEstatePortal/RealEstatePortal";
+import GovernmentManagePortals from "../../pages/GovernmenetPages/GovernmentManagePortals";
+import GovernmentmangeDigitalCertifcates from "../../pages/GovernmenetPages/GovernmentmangeDigitalCertifcates";
+export const adminRoutes: RouteObject[] = [
+    {
+        path: '/admin/users',
+        element: <ManageUsers />
+    },
+    {
+        path: '/admin/admins',
+        element: <ManageAdmins />
+    },
+    {
+        path: '/admin/contracts',
+        element: <ManageContracts/>
+    },
+    {
+        path: '/admin/documents',
+        element: <ManageDocuments/>
+    },
+    {
+        path: '/admin/digital-certifcates-requests',
+        element: <ManageDigitalCertficatesRequests/>
+    },
+    {
+        path: '/admin/portals',
+        element: <ManagePortals/>
+    },
     {
         path: '/',
-        element: <Home/>
+        element: <Home />
     },
-    {
-        path:'/admin/document',
-        element:<Document></Document>
-    },
-    {
-        path:'/admin/document/:id',
-        element:<></>
-    },
-    {
-        path:'/admin/document/payment',
-        element:<></>
-    },
-    {
-        path:'/admin/users',
-        element:<Users></Users>
-    },
-    {
-        path:'/admin/users/:id',
-        element:<></>
-    },
-    
 ];
 
 
-export const governmentOfficerRoutes:RouteObject[] = [
-
+export const governmentOfficerRoutes: RouteObject[] = [
+    {
+        path: '/gov/portals',
+        element: <GovernmentManagePortals/>
+    },
+    {
+        path: '/gov/digital-certificate orderds',
+        element: <GovernmentmangeDigitalCertifcates/>
+    },
     {
         path: '/',
-        element: <Home/>
+        element: <Home />
     },
-    {
-        path:'/goverment-officiers',
-        element:<GovermentOfficiers></GovermentOfficiers>
-    },
-    {
-        path:'/goverment-officiers/:id',
-        element:<ViewGovermentOfficiers disabled={1} ></ViewGovermentOfficiers >
-    },
-    {
-        path:'/goverment-officiers/:id/edit',
-        element:<ViewGovermentOfficiers disabled={0} /> 
-    },
-    {
-        path:'/goverment-officiers/users',
-        element:<Users></Users>
-    },
-    {
-        path:'/goverment-officiers/users/:id',
-        element:<></>
-    }
-  
+
 ];
 
 
-export const userRoutes:RouteObject[] = [
+export const userRoutes: RouteObject[] = [
     {
-        path: '/',
-        element: <Home/>
-    },
-    {
-        path:'/profile',
-        element:<Profile></Profile>
+        path: '/profile',
+        element: <Profile></Profile>
     },
     {
         path:'/document',
-        element:<Document></Document>
+        element:<MyDocuments></MyDocuments>
     },
     {
-        path:'/document/create',
-        element:<DocumentForm></DocumentForm>
-    },
-    // {
-    //     path:'/document/:id',
-    //     element:<></>
-    // },
-    {
-        path:'/document/payment',
-        element:<></>
+        path:'/document/:id',
+        element:<SingleDocument></SingleDocument>
     },
     {
-        path:'/document/sign',
-        element:<></>
+        path: '/document/:id/edit',
+        element: <h1>not implemented - T2 </h1>
     },
     {
-        path:'/digital-identity/generate',
-        element:<></>
+        path: '/document/create',
+        element: <DocumentForm></DocumentForm>
     },
+    {
+        path: '/document/:id/payment',
+        element: <Payment></Payment>
+    },
+    {
+        path: '/document/sign',
+        element: <h1>not implemneted - T7 </h1>
+    },
+    {
+        path: '/digital-identity/generate',
+        element: <DigitalIdentity />
+    },
+    {
+        path: '/electronic-signature',
+        element: <ElectronicSignature></ElectronicSignature>
+    },
+    {
+        path: '/fingerprint',
+        element: <Fingerprint></Fingerprint>
+    },
+    {
+        path: '/',
+        element: <Home />
+    },
+    {
+        path:'/real-estate-portal',
+        element: <RealEstatePortal></RealEstatePortal>
+    }
 ];
+export const userPagesZero = [
+    {
+        path: '/profile',
+        element: <Profile></Profile>
+    },
+    {
+        path: '/',
+        element: <Home />
+    },
+]
+export const userPagesOne =[
+    {
+        path: '/profile',
+        element: <Profile></Profile>
+    },
+    {
+        path: '/digital-identity/generate',
+        element: <DigitalIdentity />
+    },
+    {
+        path: '/',
+        element: <Home />
+    },
+]

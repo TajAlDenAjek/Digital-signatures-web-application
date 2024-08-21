@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { setCredentials, logOut } from '../../features/auth/authSlice'
+import {message} from 'antd'
 let SERVER_SIDE = import.meta.env.VITE_REACT_API_KEY 
 
 
@@ -28,10 +29,11 @@ const baseQuery = fetchBaseQuery({
 // custom query function to (access-refresh) logic
 const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
     // try first request
-    let result = await baseQuery(args, api, extraOptions)
+    let result:any = await baseQuery(args, api, extraOptions)
     // your token maybe expired 
-    if (result?.error?.status === 401) {
+    if (result?.error?.status === 401 ){
         api.dispatch(logOut())
+        message.error('Your session has expired, please login again')
     }
     return result
 }
@@ -39,7 +41,7 @@ const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
 // Api Slice 
 export const apiSlice = createApi({
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['auth'],
+    tagTypes: ['auth','Users','Admins','Contracts','Documents','Digital-certficate-requests','Portals' , 'digitalIdentity' ],
     endpoints: () => ({}),
 })
 

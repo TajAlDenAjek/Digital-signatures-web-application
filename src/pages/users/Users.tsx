@@ -1,16 +1,23 @@
 import React from 'react'
 import CrudTable from '../../components/CrudTable'
-import { usersColumn } from '../../constants/columns'
+import { usersColumn } from '../../constants/columns.tsx'
+import { useGetUsersQuery } from '../../features/users/usersApiSlice'
 import { fakeUsersDataSource } from '../../constants/fake'
-
-function Users() {
+type params = {
+  type: string;
+}
+function Users({ type }: params) {
+  const { data } = useGetUsersQuery({})
   return (
-    <CrudTable
+    <>
+      <CrudTable
         columns={usersColumn}
-        dataSource={fakeUsersDataSource}
-        endpoint="/api/users"
+        dataSource={data?.data}
         route="/users"
-    />
+        defaultActions={['view', 'edit', 'delete']}
+      />
+    </>
+
   )
 }
 

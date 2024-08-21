@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import type { FormProps } from 'antd';
-import { Button, Form, Input , Row , Col, DatePicker, Dropdown, Select } from 'antd';
+import { Button, Form, Input , Row , Col, DatePicker, Dropdown, Select, message } from 'antd';
 import './styles.css';
+import CustomUpload from '../../components/customUpload/CustomUpload';
+import { useUploadUserDataMutation } from '../../features/documents/documentsApiSlice';
 
 type FieldType = {
   id?: string,
@@ -14,21 +16,29 @@ type FieldType = {
   
 
 };
-const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-  console.log('Success:', values);
-};
 
 const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
 
 const ProfileForm = () => {
-  
+  const [uploadUserData , {isLoading} ] = useUploadUserDataMutation();
   
   useEffect(() => {
     
   }, [])
 
+  const onFinish: FormProps['onFinish'] =async (values) => {
+    try{
+      let res = await uploadUserData(values).unwrap();
+      message.success('uploaded succesfully');
+    }
+    catch(err){
+      console.log(err);
+      message.error(err?.data?.message)
+    }
+  };
+  
   return (
     <>
     <div >
@@ -46,69 +56,40 @@ const ProfileForm = () => {
           autoComplete="off"
           layout='vertical'
         >
-        <Form.Item<FieldType>
-          label="id"
-          name="id"
-          rules={[{ required: true, message: 'Please input your id!' }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item<FieldType>
-          label="first name"
-          name="firstName"
-          rules={[{ required: true, message: 'Please input your first name!' }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item<FieldType>
-          label="last name"
-          name="lastName"
-          rules={[{ required: true, message: 'Please input your last name!' }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item<FieldType>
-          label="father name"
-          name="fatherName"
-          rules={[{ required: true, message: 'Please input your father`s name!' }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item<FieldType>
-          label="address"
-          name="address"
-          rules={[{ required: true, message: 'Please input your address!' }]}
-        >
-          <Input/>
-        </Form.Item>
-        <Form.Item<FieldType>
-          label="date of birth"
-          name="dateOfBirth"
-          rules={[{ required: true, message: 'Please input your date of birth!' }]}
-        >
-          <DatePicker />
-        </Form.Item>
-        <Form.Item<FieldType>
-          label="gender"
-          name="gender"
-          rules={[{ required: true, message: 'Please input your gender!' }]}
-        >
-          <Select
-            placeholder="gender"
-            options={[
-              {value:'male' ,label:'male'},
-              {value:'female' ,label:'female'}
-            ]}
+          
+          <Form.Item name='fullName' label='Full Name'
+            rules={[{required:true}]}
           >
             
-          </Select>
-            
+            <Input type='text'
+
+            />
+          </Form.Item>
+
+          <Form.Item name='nationalNumber' label='National Num' 
+            rules={[{
+              required: true,            
+              pattern: new RegExp(/^\d{10}$/),
+              message: "Natinoal number is required and must have 10 digits"
+            }]}
+          >
+            <Input type='text'
+              name='nationalNumber'
+            />
+          </Form.Item>
+          <Row>
+          <Col span={10} >
+            <CustomUpload
+                name={'front'}
+              />
+          </Col>
+          <Col span={10}>
+            <CustomUpload
+              name={'back'}
+            />
+          </Col>
           
-        </Form.Item>
+          </Row>
         <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
           <Button type="primary" htmlType="submit">
             Submit

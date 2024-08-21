@@ -1,0 +1,79 @@
+
+.crud-table {
+    
+    .modal-content-container{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .ant-table-cell{
+        text-align: center;
+        font-weight: bolder;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 14px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        max-width: 50px;
+
+    }
+    // .ant-table-cell:nth-child(odd){
+    //     background-color: #A0E9FF;
+    // }
+    // .ant-table-row:nth-child(odd) {
+    //     .ant-table-cell {
+    //         background-color: #CDF5FD;
+    //     }
+    // }
+    // .ant-table-row:nth-child(even) {
+    //     .ant-table-cell {
+    //         background-color: #afe9fa;
+    //     }
+    // }
+    // .ant-table-wrapper .ant-table-tbody .ant-table-row>.ant-table-cell-row-hover {
+    //     background: #89CFF3;
+
+    // }
+
+  
+
+
+    // .ant-table-thead {
+    //     .ant-table-cell {
+    //         text-align: center;
+    //         background-color: #00A9FF;
+    //         font-weight: bolder;
+    //         font-size: 16px;
+    //     }
+
+    // }
+    .ant-table-content{
+
+        font-size: medium !important;
+    }
+    .ant-table-thead{
+        font-weight: bolder !important;
+        .ant-table-cell{
+            background-color: lightblue;
+            text-align: center;
+
+        }
+    }
+    .ant-table-cell{
+        text-align: center;
+
+        background-color: #ddedfc;
+    }
+    .ant-table-cell .ant-table-cell-row-hover{
+        background-color: #bad9e6;
+    }
+    .table-actions {
+        display: flex;
+        // justify-content: ;
+        justify-content: space-around;
+        align-items: center;
+        // gap: 20px;
+        // width: 80%;  
+    }
+}
